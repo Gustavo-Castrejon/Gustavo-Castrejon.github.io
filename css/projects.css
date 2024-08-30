@@ -12,6 +12,7 @@ body {
 
 main {
     flex: 1;
+    margin-top: 60px; /* Adjusted to accommodate the fixed header */
 }
 
 /* Header and Navbar Styling */
@@ -21,26 +22,17 @@ header {
     top: 0;
     left: 0;
     z-index: 100;
-    padding: 1rem;
+    padding: 0.75rem 1rem;
+    background-color: #333;
+    color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    transition: background-color 0.3s ease;
     box-sizing: border-box;
-    background-color: transparent;
-}
-
-header.transparent {
-    background-color: transparent;
-}
-
-header.solid {
-    background-color: rgba(51, 51, 51, 0.9);
-    transition: background-color 0.3s ease-in-out;
 }
 
 .logo h1 {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     color: #fff;
     margin: 0;
 }
@@ -50,13 +42,13 @@ nav ul {
     margin: 0;
     padding: 0;
     display: flex;
-    flex-wrap: nowrap;
     justify-content: flex-end;
+    flex-wrap: nowrap;
     overflow-x: auto;
 }
 
 nav ul li {
-    margin-left: 10px;
+    margin-left: 15px;
 }
 
 nav ul li a {
@@ -64,6 +56,11 @@ nav ul li a {
     text-decoration: none;
     font-weight: bold;
     font-size: 1rem;
+    display: block;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
 }
 
 /* Hero Section Styling */
@@ -138,7 +135,7 @@ nav ul li a {
     margin-bottom: 30px;
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Adds a subtle shadow */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .project-card img {
@@ -179,11 +176,15 @@ footer {
     background-color: #333;
     color: white;
     text-align: center;
-    padding: 10px 0;
+    padding: 1rem 0;
     width: 100%;
     position: relative;
     left: 0;
     bottom: 0;
+}
+
+footer p {
+    margin: 0;
 }
 
 .footer-linkedin {
@@ -196,28 +197,25 @@ footer {
     height: auto;
 }
 
-/* Responsive Navigation Bar Shrinking */
+/* Responsive Navigation Bar and Project Card Adjustments */
 @media (max-width: 768px) {
     header {
-        padding: 0.5rem;
+        padding: 0.5rem 1rem;
     }
 
     .logo h1 {
-        font-size: 1.3rem;
+        font-size: 1.1rem;
     }
 
     nav ul li {
-        margin-left: 5px;
+        margin-left: 10px;
     }
 
     nav ul li a {
         font-size: 0.9rem;
         padding: 0.5rem;
     }
-}
 
-/* Responsive Project Card Adjustments */
-@media (max-width: 768px) {
     .project-card {
         flex-direction: column;
         align-items: flex-start;
@@ -231,5 +229,24 @@ footer {
     .project-info {
         width: 100%;
         padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 0.5rem 1rem;
+    }
+
+    .logo h1 {
+        font-size: 1rem;
+    }
+
+    nav ul li {
+        margin-left: 8px;
+    }
+
+    nav ul li a {
+        font-size: 0.8rem;
+        padding: 0.4rem;
     }
 }
