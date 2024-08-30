@@ -1,0 +1,192 @@
+/* General Styling for Resume Page */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    position: relative; /* Set relative positioning for the overlay */
+    background-image: url('../photos/uclawallpaper.webp'); /* Path to your background image */
+    background-size: cover; /* Ensure the image covers the entire screen */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+    background-attachment: fixed; /* Keep the background fixed when scrolling */
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Overlay for the background */
+body::before {
+    content: '';
+    position: fixed; /* Change to fixed to cover the entire viewport */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Adjust the color and opacity */
+    z-index: 0; /* Place the overlay below all other content */
+    pointer-events: none; /* Allow clicks to pass through the overlay */
+}
+
+header, main, footer {
+    position: relative; /* Ensure content is positioned above the overlay */
+    z-index: 1; /* Place content above the overlay */
+}
+
+header {
+    background-color: rgba(255, 255, 255, 0.8); /* Add a slightly transparent background to make text readable */
+    padding: 10px 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+header .logo h1 {
+    margin: 0;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+    margin: 10px 0;
+}
+
+header nav ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: #fff; /* Make the navigation links white */
+    font-weight: bold;
+}
+
+header nav ul li a:hover {
+    color: #ccc; /* Optional: Lighter shade on hover */
+}
+
+/* Main Content Styling */
+main {
+    flex: 1;
+    margin-top: 70px; /* To avoid overlap with the fixed header */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Updated Introductory Section */
+.intro-section {
+    text-align: center;
+    padding: 20px;
+    margin-bottom: 20px;
+    max-width: 800px;
+    width: 100%;
+    background: none; /* Remove background color */
+    box-shadow: none; /* Remove box shadow */
+}
+
+.intro-section h2 {
+    font-size: 2rem;
+    color: #fff; /* Make the "Resume" section title white */
+}
+
+/* Embedded Resume */
+.resume-pdf {
+    width: 100%;
+    max-width: 800px; /* Restricts the max width of the resume */
+    margin: 0 auto; /* Centers the resume on the page */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Optional: adds a subtle shadow */
+}
+
+.resume-pdf iframe {
+    border: none;
+    width: 800px; /* Fixed width for the iframe to maintain formatting */
+    max-width: 100%; /* Ensures responsiveness on smaller screens */
+    height: 800px; /* Adjust height as needed */
+}
+
+/* Download Button Styling */
+.download-section {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.download-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #0077b5;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease;
+}
+
+.download-btn:hover {
+    background-color: #005582;
+}
+
+/* Footer Styling */
+footer {
+    background-color: #333; /* Solid background color */
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+    width: 100%;
+    position: relative;
+    left: 0;
+}
+
+footer p {
+    margin: 0;
+}
+
+.footer-linkedin {
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.linkedin-logo-footer {
+    width: 32px;
+    height: auto;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .intro-section {
+        padding: 15px;
+    }
+
+    .intro-section h2 {
+        font-size: 1.8rem;
+    }
+
+    .linkedin-logo-footer {
+        width: 28px;
+    }
+
+    .resume-pdf iframe {
+        height: 600px; /* Adjust height for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .intro-section h2 {
+        font-size: 1.5rem;
+    }
+
+    .linkedin-logo-footer {
+        width: 24px;
+    }
+
+    .resume-pdf iframe {
+        height: 500px; /* Adjust height for smaller screens */
+    }
+}
