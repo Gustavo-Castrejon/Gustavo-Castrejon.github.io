@@ -234,6 +234,7 @@ footer p {
 
     .resume-pdf iframe {
         height: 600px; /* Adjust height for smaller screens */
+        transform: scale(0.9); /* Slightly scale down for smaller screens */
     }
 }
 
@@ -252,5 +253,6 @@ footer p {
 
     .resume-pdf iframe {
         height: 500px; /* Adjust height for smaller screens */
+        transform: scale(0.85); /* Further scale down for mobile screens */
     }
 }
