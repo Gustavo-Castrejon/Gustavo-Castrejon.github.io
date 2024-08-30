@@ -1,0 +1,149 @@
+/* Ensure Flexbox for Footer */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-image: url('../photos/contactphotobackground.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+main {
+    flex: 1;
+    margin-top: 100px;
+}
+
+/* Footer Styling */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+    width: 100%;
+    position: relative;
+    left: 0;
+}
+
+footer p {
+    margin: 0;
+}
+
+.footer-linkedin {
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.linkedin-logo-footer {
+    width: 32px;
+    height: auto;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+/* Responsive Footer */
+@media (max-width: 768px) {
+    footer {
+        padding: 0.5rem 0;
+    }
+
+    .linkedin-logo-footer {
+        width: 28px;
+    }
+}
+
+@media (max-width: 480px) {
+    footer {
+        padding: 0.5rem 0;
+    }
+
+    .linkedin-logo-footer {
+        width: 24px;
+    }
+}
+
+/* Contact Section */
+.contact-section {
+    padding: 2rem 1rem;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #fafafa;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    margin-bottom: 2rem;
+}
+
+.contact-section h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    color: #333;
+}
+
+.contact-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact-item, .hometown-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    background-color: #f7f7f7;
+    border-radius: 8px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+.contact-item:hover, .hometown-item:hover {
+    background-color: #e7e7e7;
+}
+
+.contact-icon, .hometown-icon {
+    font-size: 1.5rem;
+    margin-right: 15px;
+    color: #0077b5;
+}
+
+.linkedin-item {
+    display: flex;
+    align-items: center;
+}
+
+.linkedin-logo-container {
+    background-color: #000; /* Black background */
+    padding: 5px; /* Add padding around the logo */
+    border-radius: 4px; /* Optional: round the corners */
+    margin-right: 10px; /* Space between the logo and the text */
+}
+
+.linkedin-logo {
+    width: 24px;
+    height: auto;
+    display: block; /* Ensures the image stays block-level */
+    vertical-align: middle;
+}
+
+.contact-item a {
+    font-size: 1.1rem;
+    color: #0077b5;
+    text-decoration: none;
+}
+
+.contact-item a:hover {
+    text-decoration: underline;
+}
+
+.hometown-item p {
+    font-size: 1.1rem;
+    color: #333;
+    margin: 0;
+}
