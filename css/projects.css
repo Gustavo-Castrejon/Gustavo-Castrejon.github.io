@@ -139,8 +139,8 @@ nav ul li a:hover {
 }
 
 .project-card img {
-    width: 30%;
-    height: 100%;
+    width: 300px;
+    height: 200px;
     object-fit: cover;
     background-color: #333;
 }
