@@ -34,19 +34,22 @@ nav ul {
     margin: 0;
     padding: 0;
     display: flex;
-    flex-wrap: wrap;
-    overflow: visible;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    gap: clamp(8px, 2vw, 20px);
 }
 
 nav ul li {
-    margin-left: 15px;
+    margin: 0;
 }
 
 nav ul li a {
     color: #fff;
     text-decoration: none;
-    font-weight: bold;
-    font-size: 1rem;
+    font-weight: 600;
+    font-size: clamp(0.8rem, 1.8vw, 1rem);
+    letter-spacing: 0.02em;
+    white-space: nowrap;
 }
 
 nav ul li a:hover {
@@ -55,13 +58,15 @@ nav ul li a:hover {
 
 /* Mobile */
 @media (max-width: 768px) {
-    header { padding: 0.5rem; }
+    header { padding: 0.6rem; }
     .logo h1 { font-size: 1.2rem; }
-    nav ul li { margin-left: 8px; }
-    nav ul li a { font-size: 0.9rem; }
+    nav ul { gap: 10px; }
+    nav ul li a { font-size: 0.85rem; }
 }
 
-@media (max-width: 480px) {
-    header { padding: 0.3rem; }
+@media (max-width: 520px) {
+    header { padding: 0.4rem 0.6rem; }
     .logo h1 { font-size: 1rem; }
+    nav ul { gap: 6px; }
+    nav ul li a { font-size: 0.78rem; letter-spacing: 0; }
 }
