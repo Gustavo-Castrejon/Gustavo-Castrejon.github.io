@@ -36,7 +36,7 @@ nav ul {
     display: flex;
     flex-wrap: nowrap;
     justify-content: flex-end;
-    gap: clamp(8px, 2vw, 20px);
+    gap: clamp(4px, 1.5vw, 16px);
 }
 
 nav ul li {
@@ -47,8 +47,8 @@ nav ul li a {
     color: #fff;
     text-decoration: none;
     font-weight: 600;
-    font-size: clamp(0.8rem, 1.8vw, 1rem);
-    letter-spacing: 0.02em;
+    font-size: clamp(0.7rem, 2vw, 0.95rem);
+    letter-spacing: 0.015em;
     white-space: nowrap;
 }
 
@@ -58,15 +58,15 @@ nav ul li a:hover {
 
 /* Mobile */
 @media (max-width: 768px) {
-    header { padding: 0.6rem; }
-    .logo h1 { font-size: 1.2rem; }
-    nav ul { gap: 10px; }
-    nav ul li a { font-size: 0.85rem; }
+    header { padding: 0.5rem 0.6rem; }
+    .logo h1 { font-size: 1.15rem; }
+    nav ul { gap: 8px; }
+    nav ul li a { font-size: 0.78rem; }
 }
 
 @media (max-width: 520px) {
-    header { padding: 0.4rem 0.6rem; }
-    .logo h1 { font-size: 1rem; }
-    nav ul { gap: 6px; }
-    nav ul li a { font-size: 0.78rem; letter-spacing: 0; }
+    header { padding: 0.35rem 0.5rem; }
+    .logo h1 { font-size: 0.95rem; }
+    nav ul { gap: 4px; }
+    nav ul li a { font-size: 0.7rem; letter-spacing: 0; }
 }
