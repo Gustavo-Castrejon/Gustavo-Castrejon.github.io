@@ -38,17 +38,58 @@
     <main>
         <section class="intro-section">
             <h2>My Resume</h2>
+            <p class="intro-subtitle">
+                Switch between my <strong>hardware-focused</strong> and <strong>software-focused</strong> resumes.
+            </p>
         </section>
 
+        <!-- Toggle buttons -->
+        <section class="resume-toggle">
+            <!-- TODO: update data-src / data-download paths to match your actual PDF filenames -->
+            <button
+                class="toggle-btn active"
+                data-src="photos/GustavoCastrejon_Electrical-Engineering2026.pdf"
+                data-download="photos/GustavoCastrejon_Electrical-Engineering2026.pdf"
+                data-label="Hardware-focused resume">
+                Hardware Resume
+            </button>
+
+            <button
+                class="toggle-btn"
+                data-src="photos/GustavoCastrejon_Software-Engineering2026.pdf"
+                data-download="photos/GustavoCastrejon_Software-Engineering2026.pdf"
+                data-label="Software-focused resume">
+                Software Resume
+            </button>
+        </section>
+
+        <p class="resume-label">
+            Currently viewing: <span id="resumeLabel">Hardware-focused resume</span>
+        </p>
+
+        <!-- Embedded Resume -->
         <section class="resume-pdf">
-            <iframe src="photos\GustavoCastrejon_Electrical-Engineering2026.pdf" width="100%" height="100%" style="border: none;">
-                <p>Your browser does not support iframes. <a href="photos/GustavoCastrejon_ElectricalEngineering2026.do.html">Download the HTML version of my resume</a>.</p>
+            <iframe
+                id="resumeFrame"
+                src="photos/GustavoCastrejon_Electrical-Engineering2026.pdf"
+                width="100%"
+                height="100%"
+                style="border: none;">
+                <p>Your browser does not support iframes.
+                    <a href="photos/GustavoCastrejon_Electrical-Engineering2026.pdf">
+                        Download the current version of my resume
+                    </a>.
+                </p>
             </iframe>
         </section>
 
         <div class="download-section">
-            <a href="photos\GustavoCastrejon_Electrical-Engineering2026.pdf" download class="download-btn">
-                Download Resume
+            <a
+                id="downloadBtn"
+                href="photos/GustavoCastrejon_Electrical-Engineering2026.pdf"
+                download
+                class="download-btn">
+                Download Current Resume
             </a>
         </div>
     </main>
@@ -56,7 +97,9 @@
     <!-- Footer Section -->
     <footer>
         <p>&copy; 2026 Gustavo Castrejon</p>
-        <a href="https://www.linkedin.com/in/gustavo-castrejon-87b884251" target="_blank" class="footer-linkedin">
+        <a href="https://www.linkedin.com/in/gustavo-castrejon-87b884251"
+           target="_blank"
+           class="footer-linkedin">
             <img src="photos/LI-Logo.png" alt="LinkedIn Logo" class="linkedin-logo-footer">
         </a>
     </footer>
@@ -76,6 +119,37 @@
 
         window.addEventListener('scroll', handleScroll);
         window.addEventListener('load', handleScroll);
+    </script>
+
+    <!-- Resume Toggle Script -->
+    <script>
+        const toggleButtons = document.querySelectorAll('.toggle-btn');
+        const resumeFrame = document.getElementById('resumeFrame');
+        const downloadBtn = document.getElementById('downloadBtn');
+        const resumeLabel = document.getElementById('resumeLabel');
+
+        toggleButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // active button state
+                toggleButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                // swap iframe source
+                const newSrc = button.dataset.src;
+                const newDownload = button.dataset.download;
+                const newLabel = button.dataset.label || '';
+
+                if (newSrc) {
+                    resumeFrame.src = newSrc;
+                }
+                if (newDownload) {
+                    downloadBtn.href = newDownload;
+                }
+                if (newLabel) {
+                    resumeLabel.textContent = newLabel;
+                }
+            });
+        });
     </script>
 
 </body>
