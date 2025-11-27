@@ -10,9 +10,6 @@ body {
     background-repeat: no-repeat; /* Prevent the image from repeating */
     background-attachment: fixed; /* Keep the background fixed when scrolling */
     color: #333;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
 }
 
 /* Overlay for the background */
@@ -33,101 +30,10 @@ header, main, footer {
     z-index: 1; /* Place content above the overlay */
 }
 
-/* Header and Navbar Styling */
-header {
-    position: fixed;
-    width: 100%;
-    top: 0;
-    left: 0;
-    z-index: 100;
-    padding: 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: background-color 0.3s ease;
-    box-sizing: border-box;
-    background-color: transparent; /* Default to transparent */
-}
-
-header.transparent {
-    background-color: transparent; /* Keep it transparent when at the top */
-}
-
-header.solid {
-    background-color: rgba(51, 51, 51, 0.9); /* Solid color on scroll */
-    transition: background-color 0.3s ease-in-out; /* Smooth transition */
-}
-
-.logo h1 {
-    font-size: 1.5rem;
-    color: #fff;
-    margin: 0;
-}
-
-nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-wrap: nowrap; /* Ensure navigation items do not wrap onto a new line */
-    justify-content: flex-end; /* Align items to the right */
-    overflow-x: auto; /* Add horizontal scroll if needed */
-}
-
-nav ul li {
-    margin-left: 10px; /* Spacing between nav items */
-}
-
-nav ul li a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 1rem; /* Adjust font size */
-}
-
-/* Responsive Navigation Bar Shrinking */
-@media (max-width: 768px) {
-    header {
-        padding: 0.5rem; /* Reduce padding for smaller screens */
-    }
-
-    .logo h1 {
-        font-size: 1.3rem; /* Slightly reduce the logo font size */
-    }
-
-    nav ul li {
-        margin-left: 5px; /* Reduce spacing between nav items */
-    }
-
-    nav ul li a {
-        font-size: 0.9rem; /* Reduce the font size for navigation links */
-        padding: 0.5rem; /* Reduce padding around the links */
-    }
-}
-
-@media (max-width: 480px) {
-    header {
-        padding: 0.3rem; /* Further reduce padding for smaller screens */
-    }
-
-    .logo h1 {
-        font-size: 1.1rem; /* Further reduce the logo font size */
-    }
-
-    nav ul li {
-        margin-left: 3px; /* Further reduce spacing between nav items */
-    }
-
-    nav ul li a {
-        font-size: 0.8rem; /* Further reduce the font size for navigation links */
-        padding: 0.3rem; /* Further reduce padding around the links */
-    }
-}
-
 /* Main Content Styling */
 main {
     flex: 1;
-    margin-top: 70px; /* To avoid overlap with the fixed header */
+    margin-top: 110px; /* ensure content clears fixed header */
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -235,10 +141,6 @@ footer p {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    header nav ul li {
-        margin: 0 5px; /* Reduce margin between nav items */
-    }
-
     .intro-section {
         padding: 15px;
     }
@@ -258,10 +160,6 @@ footer p {
 }
 
 @media (max-width: 480px) {
-    header nav ul li {
-        margin: 0 3px; /* Further reduce margin between nav items */
-    }
-
     .intro-section h2 {
         font-size: 1.5rem;
     }

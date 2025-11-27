@@ -1,7 +1,5 @@
 /* Ensure Flexbox for Footer */
 body {
-    display: flex;
-    flex-direction: column;
     min-height: 100vh;
     margin: 0;
     font-family: Arial, sans-serif;
@@ -13,8 +11,8 @@ body {
 }
 
 main {
-    flex: 1;
-    margin-top: 100px;
+    margin-top: 110px; /* ensure content clears fixed header */
+    padding-bottom: 40px;
 }
 
 /* Footer Styling */

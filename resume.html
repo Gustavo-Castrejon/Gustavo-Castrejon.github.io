@@ -4,17 +4,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Global unified navbar CSS -->
+    <link rel="stylesheet" href="css/navbar.css">
+
+    <!-- Global styles -->
     <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Page-specific CSS -->
     <link rel="stylesheet" href="css/resume.css">
     <title>Resume - Gustavo Castrejon</title>
 </head>
 
 <body>
-    <!-- Header with Navigation -->
+
+    <!-- Unified Global Navbar -->
     <header class="transparent">
         <div class="logo">
             <h1>Gustavo Castrejon</h1>
         </div>
+
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
@@ -46,21 +55,17 @@
 
     <!-- Footer Section -->
     <footer>
-        <p>&copy; 2024 Gustavo Castrejon</p>
+        <p>&copy; 2026 Gustavo Castrejon</p>
         <a href="https://www.linkedin.com/in/gustavo-castrejon-87b884251" target="_blank" class="footer-linkedin">
             <img src="photos/LI-Logo.png" alt="LinkedIn Logo" class="linkedin-logo-footer">
         </a>
     </footer>
 
-    <!-- JavaScript for Scrolling Effect -->
+    <!-- Unified Scroll Behavior -->
     <script>
-        window.onscroll = function () {
-            handleScroll();
-        };
-
         function handleScroll() {
             const header = document.querySelector('header');
-            if (window.pageYOffset > 40) {
+            if (window.scrollY > 40) {
                 header.classList.add('solid');
                 header.classList.remove('transparent');
             } else {
@@ -69,10 +74,10 @@
             }
         }
 
-        window.onload = function () {
-            handleScroll();
-        };
+        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('load', handleScroll);
     </script>
+
 </body>
 
 </html>

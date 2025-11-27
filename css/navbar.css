@@ -1,0 +1,67 @@
+/* Universal Navbar */
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s ease-in-out;
+    box-sizing: border-box;
+    background-color: transparent;
+}
+
+header.transparent {
+    background-color: transparent;
+}
+
+header.solid {
+    background-color: rgba(51, 51, 51, 0.9);
+}
+
+.logo h1 {
+    font-size: 1.5rem;
+    color: #fff;
+    margin: 0;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: visible;
+}
+
+nav ul li {
+    margin-left: 15px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    header { padding: 0.5rem; }
+    .logo h1 { font-size: 1.2rem; }
+    nav ul li { margin-left: 8px; }
+    nav ul li a { font-size: 0.9rem; }
+}
+
+@media (max-width: 480px) {
+    header { padding: 0.3rem; }
+    .logo h1 { font-size: 1rem; }
+}
