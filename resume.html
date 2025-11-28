@@ -47,7 +47,7 @@
         <section class="resume-toggle">
             <button
                 class="toggle-btn active"
-                data-src="Resume's/GustavoCastrejon_Resume-Hardware_RF.pdf"
+                data-src="Resume's/GustavoCastrejon_Resume-Hardware_RF.pdf#zoom=page-width"
                 data-download="Resume's/GustavoCastrejon_Resume-Hardware_RF.pdf"
                 data-label="Hardware-focused resume">
                 Hardware Resume
@@ -55,7 +55,7 @@
 
             <button
                 class="toggle-btn"
-                data-src="Resume's/GustavoCastrejon_Resume-Software Focus.pdf"
+                data-src="Resume's/GustavoCastrejon_Resume-Software Focus.pdf#zoom=page-width"
                 data-download="Resume's/GustavoCastrejon_Resume-Software Focus.pdf"
                 data-label="Software-focused resume">
                 Software Resume
@@ -70,10 +70,11 @@
         <section class="resume-pdf">
             <iframe
                 id="resumeFrame"
-                src="Resume's/GustavoCastrejon_Resume-Hardware_RF.pdf"
+                src="Resume's/GustavoCastrejon_Resume-Hardware_RF.pdf#zoom=page-width"
                 width="100%"
                 height="100%"
-                style="border: none;">
+                style="border: none;"
+                title="Resume PDF Viewer">
                 <p>Your browser does not support iframes.
                     <a href="Resume's/GustavoCastrejon_Resume-Hardware_RF.pdf">
                         Download the current version of my resume
@@ -139,7 +140,9 @@
                 const newLabel = button.dataset.label || '';
 
                 if (newSrc) {
-                    resumeFrame.src = newSrc;
+                    // Add zoom parameter for better mobile scaling
+                    const zoomParam = window.innerWidth <= 480 ? '#zoom=page-width' : '#zoom=page-width';
+                    resumeFrame.src = newSrc + zoomParam;
                 }
                 if (newDownload) {
                     downloadBtn.href = newDownload;

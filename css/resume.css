@@ -10,6 +10,9 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     color: #333;
+    overflow-x: hidden;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 /* Dark overlay for readability */
@@ -25,7 +28,6 @@ body::before {
     pointer-events: none;
 }
 
-header,
 main,
 footer {
     position: relative;
@@ -35,124 +37,169 @@ footer {
 /* Main layout */
 main {
     flex: 1;
-    margin-top: 110px; /* ensure content clears fixed header */
-    padding: 20px;
+    margin-top: 110px;
+    padding: 40px 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    width: 100%;
 }
 
 /* Intro Section */
 .intro-section {
     text-align: center;
-    padding: 20px;
-    margin-bottom: 10px;
-    max-width: 800px;
+    padding: 0;
+    margin-bottom: 30px;
     width: 100%;
-    background: none;
-    box-shadow: none;
 }
 
 .intro-section h2 {
-    font-size: 2rem;
+    font-size: 2.5rem;
     color: #fff;
+    margin: 0 0 12px 0;
+    font-weight: 600;
+    letter-spacing: -0.5px;
 }
 
 .intro-subtitle {
-    margin-top: 8px;
-    color: #ddd;
-    font-size: 0.95rem;
+    margin-top: 0;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.intro-subtitle strong {
+    color: #fff;
+    font-weight: 600;
 }
 
 /* Toggle bar */
 .resume-toggle {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 12px;
     justify-content: center;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    padding: 0;
 }
 
 .toggle-btn {
-    border: none;
+    border: 2px solid rgba(255, 255, 255, 0.2);
     outline: none;
-    padding: 8px 16px;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.08);
-    color: #f5f5f5;
-    font-size: 0.95rem;
+    padding: 12px 24px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 500;
     cursor: pointer;
-    transition: background 0.2s ease, transform 0.1s ease, color 0.2s ease;
-    backdrop-filter: blur(4px);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(8px);
+    min-width: 140px;
 }
 
 .toggle-btn:hover {
-    background: rgba(255, 255, 255, 0.18);
-    transform: translateY(-1px);
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .toggle-btn.active {
     background: #84dcff;
-    color: #222;
+    color: #1a1a1a;
+    border-color: #84dcff;
+    box-shadow: 0 4px 16px rgba(132, 220, 255, 0.4);
+}
+
+.toggle-btn.active:hover {
+    background: #6bc5e8;
+    border-color: #6bc5e8;
 }
 
 /* Current resume label */
 .resume-label {
-    margin: 5px 0 15px 0;
-    font-size: 0.95rem;
-    color: #eee;
+    margin: 0 0 30px 0;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
     text-align: center;
+    padding: 8px 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 6px;
+    display: inline-block;
 }
 
 .resume-label span {
-    font-weight: bold;
+    font-weight: 600;
+    color: #fff;
 }
 
-/* Embedded Resume */
+/* Embedded Resume – desktop default */
 .resume-pdf {
     width: 100%;
     max-width: 800px;
-    height: auto;
-    aspect-ratio: 8.5 / 11;
-    margin: 0 auto;
+    height: 0;
+    padding-bottom: 129.41%; /* aspect ratio for US letter */
+    margin: 0 auto 40px auto;
     overflow: hidden;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #111;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    position: relative;
+    background: #1a1a1a;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-sizing: border-box;
 }
 
 .resume-pdf iframe {
-    border: none;
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    transform-origin: top left;
-    transform: scale(1);
+    max-width: 100%;
+    border: none;
     display: block;
-    margin: 0 auto;
+    border-radius: 8px;
+    box-sizing: border-box;
 }
 
 /* Download Button */
 .download-section {
     text-align: center;
-    margin-top: 20px;
+    margin-top: 0;
+    width: 100%;
 }
 
 .download-btn {
-    display: inline-block;
-    padding: 10px 24px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 32px;
     background-color: #0077b5;
     color: #fff;
     text-decoration: none;
-    border-radius: 999px;
+    border-radius: 8px;
     font-size: 1rem;
-    transition: background-color 0.3s ease, transform 0.1s ease;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 119, 181, 0.3);
+    border: none;
+    cursor: pointer;
 }
 
 .download-btn:hover {
     background-color: #005582;
-    transform: translateY(-1px);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 119, 181, 0.4);
+}
+
+.download-btn:active {
+    transform: translateY(0);
 }
 
 /* Footer Styling */
@@ -180,35 +227,137 @@ footer p {
     height: auto;
 }
 
-/* Responsive Design */
+/* ========================= */
+/*   Responsive – Tablets    */
+/* ========================= */
 @media (max-width: 768px) {
+    main {
+        padding: 30px 15px;
+    }
+
     .intro-section {
-        padding: 15px;
+        margin-bottom: 25px;
     }
 
     .intro-section h2 {
-        font-size: 1.8rem;
+        font-size: 2rem;
+    }
+
+    .intro-subtitle {
+        font-size: 0.95rem;
+    }
+
+    .toggle-btn {
+        padding: 10px 20px;
+        font-size: 0.95rem;
+        min-width: 120px;
+    }
+
+    .resume-label {
+        font-size: 0.85rem;
+        padding: 6px 12px;
+    }
+
+    /* Mobile-friendly resume behavior */
+    .resume-pdf {
+        max-width: 100%;
+        width: 100%;
+        margin: 0 auto 30px auto;
+        height: auto;
+        padding-bottom: 0;
+        overflow: hidden;
+        border-radius: 6px;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    .resume-pdf iframe {
+        position: static;
+        width: 120% !important;
+        max-width: 120%;
+        height: 130vh;
+        border-radius: 6px;
+        box-sizing: border-box;
+        transform: scale(0.85);
+        transform-origin: top center;
+    }
+
+    .download-btn {
+        padding: 12px 28px;
+        font-size: 0.95rem;
     }
 
     .linkedin-logo-footer {
         width: 28px;
     }
-
-    .resume-pdf iframe {
-        transform: scale(0.9);
-    }
 }
 
+/* ========================= */
+/*   Responsive – Phones     */
+/* ========================= */
 @media (max-width: 480px) {
+    main {
+        padding: 20px 10px;
+    }
+
     .intro-section h2 {
-        font-size: 1.5rem;
+        font-size: 1.75rem;
+    }
+
+    .intro-subtitle {
+        font-size: 0.9rem;
+    }
+
+    .resume-toggle {
+        gap: 8px;
+    }
+
+    .toggle-btn {
+        padding: 10px 16px;
+        font-size: 0.9rem;
+        min-width: 110px;
+    }
+
+    .resume-label {
+        font-size: 0.8rem;
+        padding: 6px 10px;
+        margin-bottom: 20px;
+    }
+
+    .resume-pdf {
+        max-width: 100%;
+        width: 100%;
+        margin: 0 0 25px 0;
+        padding: 0;
+        border-radius: 4px;
+        overflow: hidden;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    .resume-pdf iframe {
+        width: 140% !important;
+        max-width: 140%;
+        height: 140vh;
+        border-radius: 4px;
+        box-sizing: border-box;
+        transform: scale(0.75);
+        transform-origin: top center;
+        overflow: hidden;
+    }
+
+    .download-btn {
+        padding: 12px 24px;
+        font-size: 0.9rem;
+        width: 100%;
+        max-width: 280px;
     }
 
     .linkedin-logo-footer {
         width: 24px;
-    }
-
-    .resume-pdf iframe {
-        transform: scale(0.85);
     }
 }
