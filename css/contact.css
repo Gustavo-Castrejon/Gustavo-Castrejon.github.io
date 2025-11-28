@@ -12,8 +12,12 @@ body {
 }
 
 main {
-    margin-top: 110px; /* ensure content clears fixed header */
-    padding-bottom: 40px;
+    margin-top: 110px;
+    padding: 60px 20px 80px 20px;
+    min-height: calc(100vh - 200px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* Footer Styling */
@@ -43,8 +47,45 @@ footer p {
     margin-top: 10px;
 }
 
-/* Responsive Footer */
+/* Responsive Design */
 @media (max-width: 768px) {
+    main {
+        padding: 40px 15px 60px 15px;
+    }
+
+    .contact-section {
+        padding: 40px 30px;
+    }
+
+    .contact-section h2 {
+        font-size: 2rem;
+    }
+
+    .contact-section > p {
+        font-size: 1rem;
+        margin-bottom: 32px;
+    }
+
+    .contact-item, .hometown-item {
+        padding: 18px 20px;
+    }
+
+    .contact-icon, .hometown-icon {
+        font-size: 1.6rem;
+        margin-right: 16px;
+        width: 36px;
+    }
+
+    .linkedin-logo-container {
+        margin-right: 16px;
+        width: 36px;
+        height: 36px;
+    }
+
+    .contact-item a {
+        font-size: 1.05rem;
+    }
+
     footer {
         padding: 0.5rem 0;
     }
@@ -55,6 +96,55 @@ footer p {
 }
 
 @media (max-width: 480px) {
+    main {
+        padding: 30px 10px 50px 10px;
+    }
+
+    .contact-section {
+        padding: 30px 20px;
+        border-radius: 12px;
+    }
+
+    .contact-section h2 {
+        font-size: 1.75rem;
+        margin-bottom: 10px;
+    }
+
+    .contact-section > p {
+        font-size: 0.95rem;
+        margin-bottom: 28px;
+    }
+
+    .contact-details {
+        gap: 12px;
+    }
+
+    .contact-item, .hometown-item {
+        padding: 16px 18px;
+        border-radius: 10px;
+    }
+
+    .contact-icon, .hometown-icon {
+        font-size: 1.5rem;
+        margin-right: 14px;
+        width: 32px;
+    }
+
+    .linkedin-logo-container {
+        margin-right: 14px;
+        width: 32px;
+        height: 32px;
+        padding: 6px;
+    }
+
+    .linkedin-logo {
+        width: 20px;
+    }
+
+    .contact-item a {
+        font-size: 1rem;
+    }
+
     footer {
         padding: 0.5rem 0;
     }
@@ -66,50 +156,68 @@ footer p {
 
 /* Contact Section */
 .contact-section {
-    padding: 2rem 1rem;
-    max-width: 800px;
+    padding: 50px 40px;
+    max-width: 700px;
+    width: 100%;
     margin: 0 auto;
-    background-color: #fafafa;
-    border-radius: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(5px);
-    margin-bottom: 2rem;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 16px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(10px);
 }
 
 .contact-section h2 {
     text-align: center;
-    margin-bottom: 1rem;
-    font-size: 2rem;
-    color: #333;
+    margin: 0 0 12px 0;
+    font-size: 2.5rem;
+    color: #222;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+}
+
+.contact-section > p {
+    text-align: center;
+    margin: 0 0 40px 0;
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.6;
 }
 
 .contact-details {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    max-width: 600px;
-    margin: 0 auto;
+    align-items: stretch;
+    gap: 16px;
+    width: 100%;
 }
 
 .contact-item, .hometown-item {
     display: flex;
     align-items: center;
-    margin-bottom: 1rem;
-    padding: 0.5rem;
-    background-color: #f7f7f7;
-    border-radius: 8px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease;
+    padding: 20px 24px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .contact-item:hover, .hometown-item:hover {
-    background-color: #e7e7e7;
+    background-color: #f8f9fa;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+    border-color: rgba(0, 119, 181, 0.2);
 }
 
 .contact-icon, .hometown-icon {
-    font-size: 1.5rem;
-    margin-right: 15px;
+    font-size: 1.8rem;
+    margin-right: 20px;
     color: #0077b5;
+    flex-shrink: 0;
+    width: 40px;
+    text-align: center;
 }
 
 .linkedin-item {
@@ -118,26 +226,35 @@ footer p {
 }
 
 .linkedin-logo-container {
-    background-color: #000; /* Black background */
-    padding: 5px; /* Add padding around the logo */
-    border-radius: 4px; /* Optional: round the corners */
-    margin-right: 10px; /* Space between the logo and the text */
+    background-color: #0077b5;
+    padding: 8px;
+    border-radius: 6px;
+    margin-right: 20px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
 }
 
 .linkedin-logo {
     width: 24px;
     height: auto;
-    display: block; /* Ensures the image stays block-level */
-    vertical-align: middle;
+    display: block;
 }
 
 .contact-item a {
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     color: #0077b5;
     text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    word-break: break-word;
 }
 
 .contact-item a:hover {
+    color: #005582;
     text-decoration: underline;
 }
 
