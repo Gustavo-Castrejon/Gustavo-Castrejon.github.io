@@ -4,7 +4,7 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
     overflow-x: hidden;
-    background-image: url('../photos/contactphotobackground.webp');
+    background-image: url('../photos/LAbackground.jpeg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -154,23 +154,26 @@ footer p {
     }
 }
 
-/* Contact Section */
+/* Contact Section – MORE TRANSPARENT / GLASSY */
 .contact-section {
     padding: 50px 40px;
     max-width: 700px;
     width: 100%;
     margin: 0 auto;
-    background-color: rgba(255, 255, 255, 0.95);
+
+    /* was solid white, now translucent dark glass */
+    background-color: rgba(0, 0, 0, 0.35);
     border-radius: 16px;
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
-    backdrop-filter: blur(10px);
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(3px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 .contact-section h2 {
     text-align: center;
     margin: 0 0 12px 0;
     font-size: 2.5rem;
-    color: #222;
+    color: #ffffff;
     font-weight: 600;
     letter-spacing: -0.5px;
 }
@@ -179,7 +182,7 @@ footer p {
     text-align: center;
     margin: 0 0 40px 0;
     font-size: 1.1rem;
-    color: #555;
+    color: rgba(255, 255, 255, 0.85);
     line-height: 1.6;
 }
 
@@ -191,30 +194,35 @@ footer p {
     width: 100%;
 }
 
-.contact-item, .hometown-item {
+.contact-item,
+.hometown-item {
     display: flex;
     align-items: center;
     padding: 20px 24px;
-    background-color: #fff;
+
+    /* semi-transparent tiles instead of solid white */
+    background-color: rgba(0, 0, 0, 0.40);
     border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
     transition: all 0.3s ease;
-    border: 1px solid rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     width: 100%;
     box-sizing: border-box;
 }
 
-.contact-item:hover, .hometown-item:hover {
-    background-color: #f8f9fa;
+.contact-item:hover,
+.hometown-item:hover {
+    background-color: rgba(0, 0, 0, 0.55);
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
-    border-color: rgba(0, 119, 181, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border-color: rgba(132, 220, 255, 0.5);
 }
 
-.contact-icon, .hometown-icon {
+.contact-icon,
+.hometown-icon {
     font-size: 1.8rem;
     margin-right: 20px;
-    color: #0077b5;
+    color: #84dcff;
     flex-shrink: 0;
     width: 40px;
     text-align: center;
@@ -246,7 +254,7 @@ footer p {
 
 .contact-item a {
     font-size: 1.15rem;
-    color: #0077b5;
+    color: #e5f7ff;
     text-decoration: none;
     font-weight: 500;
     transition: color 0.3s ease;
@@ -254,12 +262,12 @@ footer p {
 }
 
 .contact-item a:hover {
-    color: #005582;
+    color: #ffffff;
     text-decoration: underline;
 }
 
 .hometown-item p {
     font-size: 1.1rem;
-    color: #333;
+    color: #f5f5f5;
     margin: 0;
 }
