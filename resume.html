@@ -47,16 +47,18 @@
         <section class="resume-toggle">
             <button
                 class="toggle-btn active"
-                data-src="Resume's/GustavoCastrejon_Resume-Hardware_RF.pdf#zoom=page-width"
+                data-src="Resume's/GustavoCastrejon_Resume-Hardware_RF.pdf#zoom=page-fit&toolbar=0&navpanes=0&scrollbar=0"
                 data-download="Resume's/GustavoCastrejon_Resume-Hardware_RF.pdf"
+                data-img="Resume's/GustavoCastrejon_Resume-Hardware_RF.png"
                 data-label="Hardware-focused resume">
                 Hardware Resume
             </button>
 
             <button
                 class="toggle-btn"
-                data-src="Resume's/GustavoCastrejon_Resume-Software Focus.pdf#zoom=page-width"
+                data-src="Resume's/GustavoCastrejon_Resume-Software Focus.pdf#zoom=page-fit&toolbar=0&navpanes=0&scrollbar=0"
                 data-download="Resume's/GustavoCastrejon_Resume-Software Focus.pdf"
+                data-img="Resume's/GustavoCastrejon_Resume-Software Focus.png"
                 data-label="Software-focused resume">
                 Software Resume
             </button>
@@ -66,14 +68,11 @@
             Currently viewing: <span id="resumeLabel">Hardware-focused resume</span>
         </p>
 
-        <!-- Embedded Resume -->
-        <section class="resume-pdf">
+        <!-- DESKTOP VIEWER: PDF iframe -->
+        <section class="resume-pdf desktop-only">
             <iframe
                 id="resumeFrame"
-                src="Resume's/GustavoCastrejon_Resume-Hardware_RF.pdf#zoom=page-width"
-                width="100%"
-                height="100%"
-                style="border: none;"
+                src="Resume's/GustavoCastrejon_Resume-Hardware_RF.pdf#zoom=page-fit&toolbar=0&navpanes=0&scrollbar=0"
                 title="Resume PDF Viewer">
                 <p>Your browser does not support iframes.
                     <a href="Resume's/GustavoCastrejon_Resume-Hardware_RF.pdf">
@@ -81,6 +80,14 @@
                     </a>.
                 </p>
             </iframe>
+        </section>
+
+        <!-- MOBILE VIEWER: responsive image -->
+        <section class="resume-image mobile-only">
+            <img
+                id="resumeImage"
+                src="Resume's/GustavoCastrejon_Resume-Hardware_RF.png"
+                alt="Gustavo Castrejon Resume preview">
         </section>
 
         <div class="download-section">
@@ -124,9 +131,10 @@
     <!-- Resume Toggle Script -->
     <script>
         const toggleButtons = document.querySelectorAll('.toggle-btn');
-        const resumeFrame = document.getElementById('resumeFrame');
-        const downloadBtn = document.getElementById('downloadBtn');
-        const resumeLabel = document.getElementById('resumeLabel');
+        const resumeFrame  = document.getElementById('resumeFrame');
+        const resumeImage  = document.getElementById('resumeImage');
+        const downloadBtn  = document.getElementById('downloadBtn');
+        const resumeLabel  = document.getElementById('resumeLabel');
 
         toggleButtons.forEach(button => {
             button.addEventListener('click', () => {
@@ -134,21 +142,22 @@
                 toggleButtons.forEach(btn => btn.classList.remove('active'));
                 button.classList.add('active');
 
-                // swap iframe source
-                const newSrc = button.dataset.src;
+                const newSrc      = button.dataset.src;
                 const newDownload = button.dataset.download;
-                const newLabel = button.dataset.label || '';
+                const newLabel    = button.dataset.label || '';
+                const newImg      = button.dataset.img;
 
-                if (newSrc) {
-                    // Add zoom parameter for better mobile scaling
-                    const zoomParam = window.innerWidth <= 480 ? '#zoom=page-width' : '#zoom=page-width';
-                    resumeFrame.src = newSrc + zoomParam;
+                if (newSrc && resumeFrame) {
+                    resumeFrame.src = newSrc;
                 }
                 if (newDownload) {
                     downloadBtn.href = newDownload;
                 }
                 if (newLabel) {
                     resumeLabel.textContent = newLabel;
+                }
+                if (newImg && resumeImage) {
+                    resumeImage.src = newImg;
                 }
             });
         });
