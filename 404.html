@@ -1,25 +1,88 @@
----
-permalink: /404.html
-layout: default
----
+<!DOCTYPE html>
+<html lang="en">
 
-<style type="text/css" media="screen">
-  .container {
-    margin: 10px auto;
-    max-width: 600px;
-    text-align: center;
-  }
-  h1 {
-    margin: 30px 0;
-    font-size: 4em;
-    line-height: 1;
-    letter-spacing: -1px;
-  }
-</style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<div class="container">
-  <h1>404</h1>
+    <!-- Global unified navbar CSS -->
+    <link rel="stylesheet" href="css/navbar.css">
 
-  <p><strong>Page not found :(</strong></p>
-  <p>The requested page could not be found.</p>
-</div>
+    <!-- Global styles -->
+    <link rel="stylesheet" href="css/styles.css">
+
+    <title>Page Not Found - Gustavo Castrejon</title>
+    <style>
+        .not-found-section {
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 160px 20px 80px 20px;
+        }
+
+        .not-found-section h1 {
+            margin: 0 0 16px 0;
+            font-size: 4rem;
+            line-height: 1;
+            letter-spacing: -1px;
+            color: #222;
+        }
+
+        .not-found-section p {
+            font-size: 1.1rem;
+            color: #444;
+            margin-bottom: 24px;
+        }
+
+        .not-found-section a {
+            color: #0d6efd;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .not-found-section a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Unified Global Navbar -->
+    <header class="transparent">
+        <div class="logo">
+            <h1>Gustavo Castrejon</h1>
+        </div>
+
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="resume.html">Resume</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="not-found-section">
+            <h1>404</h1>
+            <p><strong>Page not found :(</strong></p>
+            <p>The page you're looking for doesn't exist. <a href="index.html">Go back home</a>.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Gustavo Castrejon</p>
+        <a href="https://www.linkedin.com/in/gustavo-castrejon-87b884251" target="_blank" class="footer-linkedin">
+            <img src="assets/images/logos/linkedin.png" alt="LinkedIn Logo" class="linkedin-logo-footer">
+        </a>
+    </footer>
+
+    <script src="js/navbar.js"></script>
+
+</body>
+</html>

@@ -19,7 +19,7 @@ main {
    HERO SECTION
 ------------------------------------------- */
 .hero-section {
-    background-image: url('../photos/breadboardwallpaper.jpeg');
+    background-image: url('../assets/images/backgrounds/breadboard.jpeg');
     background-size: cover;
     background-position: center;
     padding: 100px 20px;

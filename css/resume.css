@@ -4,7 +4,7 @@ body {
     margin: 0;
     padding: 0;
     position: relative;
-    background-image: url('../photos/uclawallpaper.webp');
+    background-image: url('../assets/images/backgrounds/ucla-wallpaper.webp');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

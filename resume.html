@@ -47,18 +47,18 @@
         <section class="resume-toggle">
             <button
                 class="toggle-btn active"
-                data-src="Resume's/GustavoCastrejon_Resume-Hardware_RF.pdf#zoom=page-fit&toolbar=0&navpanes=0&scrollbar=0"
-                data-download="Resume's/GustavoCastrejon_Resume-Hardware_RF.pdf"
-                data-img="Resume's/GustavoCastrejon_Resume-Hardware_RF.png"
+                data-src="assets/resume/hardware/resume-hardware.pdf#zoom=page-fit&toolbar=0&navpanes=0&scrollbar=0"
+                data-download="assets/resume/hardware/resume-hardware.pdf"
+                data-img="assets/resume/hardware/resume-hardware.png"
                 data-label="Hardware-focused resume">
                 Hardware Resume
             </button>
 
             <button
                 class="toggle-btn"
-                data-src="Resume's/GustavoCastrejon_Resume-Software Focus.pdf#zoom=page-fit&toolbar=0&navpanes=0&scrollbar=0"
-                data-download="Resume's/GustavoCastrejon_Resume-Software Focus.pdf"
-                data-img="Resume's/GustavoCastrejon_Resume-Software Focus.png"
+                data-src="assets/resume/software/resume-software.pdf#zoom=page-fit&toolbar=0&navpanes=0&scrollbar=0"
+                data-download="assets/resume/software/resume-software.pdf"
+                data-img="assets/resume/software/resume-software.png"
                 data-label="Software-focused resume">
                 Software Resume
             </button>
@@ -72,10 +72,10 @@
         <section class="resume-pdf desktop-only">
             <iframe
                 id="resumeFrame"
-                src="Resume's/GustavoCastrejon_Resume-Hardware_RF.pdf#zoom=page-fit&toolbar=0&navpanes=0&scrollbar=0"
+                src="assets/resume/hardware/resume-hardware.pdf#zoom=page-fit&toolbar=0&navpanes=0&scrollbar=0"
                 title="Resume PDF Viewer">
                 <p>Your browser does not support iframes.
-                    <a href="Resume's/GustavoCastrejon_Resume-Hardware_RF.pdf">
+                    <a href="assets/resume/hardware/resume-hardware.pdf">
                         Download the current version of my resume
                     </a>.
                 </p>
@@ -86,14 +86,14 @@
         <section class="resume-image mobile-only">
             <img
                 id="resumeImage"
-                src="Resume's/GustavoCastrejon_Resume-Hardware_RF.png"
+                src="assets/resume/hardware/resume-hardware.png"
                 alt="Gustavo Castrejon Resume preview">
         </section>
 
         <div class="download-section">
             <a
                 id="downloadBtn"
-                href="Resume's/GustavoCastrejon_Resume-Hardware_RF.pdf"
+                href="assets/resume/hardware/resume-hardware.pdf"
                 download
                 class="download-btn">
                 Download Current Resume
@@ -107,26 +107,12 @@
         <a href="https://www.linkedin.com/in/gustavo-castrejon-87b884251"
            target="_blank"
            class="footer-linkedin">
-            <img src="photos/LI-Logo.png" alt="LinkedIn Logo" class="linkedin-logo-footer">
+            <img src="assets/images/logos/linkedin.png" alt="LinkedIn Logo" class="linkedin-logo-footer">
         </a>
     </footer>
 
     <!-- Unified Scroll Behavior -->
-    <script>
-        function handleScroll() {
-            const header = document.querySelector('header');
-            if (window.scrollY > 40) {
-                header.classList.add('solid');
-                header.classList.remove('transparent');
-            } else {
-                header.classList.add('transparent');
-                header.classList.remove('solid');
-            }
-        }
-
-        window.addEventListener('scroll', handleScroll);
-        window.addEventListener('load', handleScroll);
-    </script>
+    <script src="js/navbar.js"></script>
 
     <!-- Resume Toggle Script -->
     <script>

@@ -4,7 +4,7 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
     overflow-x: hidden;
-    background-image: url('../photos/LAbackground.jpeg');
+    background-image: url('../assets/images/backgrounds/la-skyline.jpeg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
