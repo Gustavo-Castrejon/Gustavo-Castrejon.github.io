@@ -3,7 +3,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    background-color: var(--surface-light);
     overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
@@ -13,99 +13,7 @@ html, body {
     height: 100%; /* Ensure the body and HTML take the full height of the screen */
 }
 
-/* Header and Navbar Styling */
-header {
-    position: fixed;
-    width: 100%;
-    top: 0;
-    left: 0;
-    z-index: 100;
-    padding: 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: background-color 0.3s ease;
-    box-sizing: border-box;
-    background-color: transparent; /* Default to transparent */
-}
-
-header.transparent {
-    background-color: rgba(0, 0, 0, 0.15); /* extremely light tint */
-    backdrop-filter: blur(4px);            /* softens the background */
-}
-
-
-header.solid {
-    background-color: rgba(51, 51, 51, 0.9); /* Solid color on scroll */
-    transition: background-color 0.3s ease-in-out; /* Smooth transition */
-}
-
-.logo h1 {
-    font-size: 1.5rem;
-    color: #fff;
-    margin: 0;
-}
-
-nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: flex-end;
-    gap: clamp(4px, 1.5vw, 16px);
-}
-
-nav ul li {
-    margin: 0;
-}
-
-nav ul li a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: clamp(0.7rem, 2vw, 0.95rem);
-    letter-spacing: 0.015em;
-    white-space: nowrap;
-}
-
-/* Responsive Navigation Bar Shrinking */
-@media (max-width: 768px) {
-    header {
-        padding: 0.5rem 0.6rem;
-    }
-
-    .logo h1 {
-        font-size: 1.15rem;
-    }
-
-    nav ul {
-        gap: 8px;
-    }
-
-    nav ul li a {
-        font-size: 0.78rem;
-    }
-}
-
-@media (max-width: 520px) {
-    header {
-        padding: 0.35rem 0.5rem;
-    }
-
-    .logo h1 {
-        font-size: 0.95rem;
-    }
-
-    nav ul {
-        gap: 4px;
-    }
-
-    nav ul li a {
-        font-size: 0.7rem;
-        letter-spacing: 0;
-    }
-}
+/* Header and navbar styling lives in navbar.css (loaded first on every page) */
 
 /* LinkedIn Button */
 .btn-linkedin {
@@ -127,12 +35,13 @@ nav ul li a {
 
 /* Footer Styling */
 footer {
-    background: #333;
-    color: #fff;
+    background: var(--surface-charcoal);
+    color: var(--text-on-dark);
     text-align: center;
     padding: 1rem 0;
     position: relative;
     width: 100%;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .footer-linkedin {
@@ -190,18 +99,20 @@ footer {
 }
 
 .hero h2 {
-    font-size: 2.2rem;
-    margin: 0 0 32px 0;
+    font-size: 1.85rem;
+    margin: 0 auto 32px auto;
+    max-width: 640px;
     font-weight: 300;
+    line-height: 1.35;
     color: rgba(255, 255, 255, 0.95);
-    letter-spacing: 0.5px;
+    letter-spacing: 0.3px;
 }
 
 .contact-message {
-    margin-top: 32px;
-    font-size: 1.1rem;
+    margin-top: 24px;
+    font-size: 1.05rem;
     line-height: 1.6;
-    color: rgba(255, 255, 255, 0.9);
+    color: rgba(255, 255, 255, 0.85);
     max-width: 600px;
 }
 
@@ -214,11 +125,212 @@ footer {
 }
 
 .btn-linkedin:hover {
-    transform: translateY(-2px);
+    transform: translateY(-2px) scale(1.08);
 }
 
 .btn-linkedin:hover .linkedin-logo {
     filter: brightness(1.1);
+}
+
+/* Hero CTA Row */
+.hero-cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.hero-cta .btn-linkedin {
+    margin-top: 0;
+    padding: 8px;
+}
+
+.cta-btn {
+    display: inline-block;
+    padding: 12px 28px;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    transition: transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.cta-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+.cta-solid-light {
+    background-color: #fff;
+    color: #0d1b2a;
+}
+
+.cta-solid-light:hover {
+    background-color: #e6e6e6;
+}
+
+.cta-outline-light {
+    background-color: transparent;
+    color: #fff;
+    border: 1.5px solid rgba(255, 255, 255, 0.7);
+}
+
+.cta-outline-light:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-color: #fff;
+}
+
+.cta-solid-dark {
+    background-color: #0d1b2a;
+    color: #fff;
+}
+
+.cta-solid-dark:hover {
+    background-color: #16283d;
+}
+
+/* Stats / Credibility Strip */
+.stats-strip {
+    background-color: var(--surface-navy);
+    color: var(--text-on-dark);
+    padding: 56px 20px 40px;
+    text-align: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.stats-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 48px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 110px;
+}
+
+.stat-number {
+    font-size: 2.2rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.stat-label {
+    margin-top: 6px;
+    font-size: 0.8rem;
+    color: var(--text-on-dark-softer);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.stats-companies {
+    margin: 32px 0 0 0;
+    font-size: 0.9rem;
+    color: var(--text-on-dark-faint);
+    letter-spacing: 0.03em;
+}
+
+/* Featured Projects */
+.featured-projects {
+    padding: 80px 20px;
+    background-color: #fff;
+}
+
+.featured-projects-header {
+    max-width: 700px;
+    margin: 0 auto 48px auto;
+    text-align: center;
+}
+
+.featured-projects-header h2 {
+    font-size: 2.2rem;
+    margin: 0 0 12px 0;
+    color: #222;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+}
+
+.featured-projects-header p {
+    color: #555;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.featured-projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.featured-project-card {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.featured-project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.14);
+}
+
+.featured-project-card img {
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.featured-project-card:hover img {
+    transform: scale(1.06);
+}
+
+.featured-project-info {
+    padding: 20px;
+}
+
+.featured-project-tag {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #0d6efd;
+    margin-bottom: 8px;
+}
+
+.featured-project-info h3 {
+    font-size: 1.15rem;
+    margin: 0 0 8px 0;
+    color: #222;
+}
+
+.featured-project-info p {
+    font-size: 0.92rem;
+    line-height: 1.5;
+    color: #555;
+    margin: 0;
+}
+
+.featured-projects-footer {
+    text-align: center;
+    margin-top: 48px;
 }
 
 /* About Me Section */
@@ -284,13 +396,47 @@ footer {
     }
 
     .hero h2 {
-        font-size: 1.8rem;
+        font-size: 1.5rem;
         margin-bottom: 24px;
+    }
+
+    .hero-cta {
+        gap: 12px;
+    }
+
+    .cta-btn {
+        padding: 10px 22px;
+        font-size: 0.88rem;
     }
 
     .contact-message {
         font-size: 1rem;
         margin-top: 24px;
+    }
+
+    .stats-strip {
+        padding: 44px 20px 32px;
+    }
+
+    .stats-container {
+        gap: 28px;
+    }
+
+    .stat-number {
+        font-size: 1.8rem;
+    }
+
+    .featured-projects {
+        padding: 60px 20px;
+    }
+
+    .featured-projects-header h2 {
+        font-size: 1.8rem;
+    }
+
+    .featured-projects-grid {
+        grid-template-columns: 1fr;
+        max-width: 480px;
     }
 
     .about-me-section {
@@ -336,14 +482,55 @@ footer {
     }
 
     .hero h2 {
-        font-size: 1.4rem;
+        font-size: 1.2rem;
         margin-bottom: 20px;
+    }
+
+    .hero-cta {
+        flex-direction: column;
+        gap: 10px;
     }
 
     .contact-message {
         font-size: 0.95rem;
         margin-top: 20px;
         line-height: 1.5;
+    }
+
+    .stats-strip {
+        padding: 36px 15px 28px;
+    }
+
+    .stats-container {
+        gap: 20px;
+    }
+
+    .stat-item {
+        min-width: 90px;
+    }
+
+    .stat-number {
+        font-size: 1.5rem;
+    }
+
+    .stat-label {
+        font-size: 0.72rem;
+    }
+
+    .stats-companies {
+        font-size: 0.8rem;
+    }
+
+    .featured-projects {
+        padding: 50px 15px;
+    }
+
+    .featured-projects-header h2 {
+        font-size: 1.6rem;
+    }
+
+    .featured-projects-header p {
+        font-size: 0.95rem;
     }
 
     .about-me-section {
@@ -370,5 +557,39 @@ footer {
 
     .about-text p {
         margin-bottom: 16px;
+    }
+}
+
+/* Scroll-reveal (paired with js/scroll-reveal.js) */
+.reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.in-view {
+    opacity: 1;
+    transform: none;
+}
+
+.stats-container .reveal:nth-child(2) { transition-delay: 0.08s; }
+.stats-container .reveal:nth-child(3) { transition-delay: 0.16s; }
+.stats-container .reveal:nth-child(4) { transition-delay: 0.24s; }
+
+.featured-projects-grid .reveal:nth-child(2) { transition-delay: 0.1s; }
+.featured-projects-grid .reveal:nth-child(3) { transition-delay: 0.2s; }
+
+@media (prefers-reduced-motion: reduce) {
+    .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+
+    .cta-btn:hover,
+    .btn-linkedin:hover,
+    .featured-project-card:hover,
+    .featured-project-card:hover img {
+        transform: none;
     }
 }

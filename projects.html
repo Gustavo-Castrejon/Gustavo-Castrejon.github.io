@@ -5,6 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- Apply saved theme before first paint to avoid a flash -->
+    <script>
+        (function () {
+            var theme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
+
+    <!-- Shared theme variables -->
+    <link rel="stylesheet" href="css/theme.css">
+
     <!-- Global unified navbar CSS -->
     <link rel="stylesheet" href="css/navbar.css">
 
@@ -32,6 +43,9 @@
                 <li><a href="resume.html">Resume</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle light and dark theme" type="button">
+                <span class="theme-toggle-icon"></span>
+            </button>
         </nav>
     </header>
 
@@ -70,8 +84,119 @@
         <!-- PROJECT LIST -->
         <section class="projects-list">
 
+            <!-- StrideIQ (hardware) -->
+            <div class="project-card"
+                 id="strideiq"
+                 data-category="hardware"
+                 data-rank-all="-4"
+                 data-rank-hardware="-3"
+                 data-rank-software="999"
+                 data-rank-research="999">
+                <img src="assets/images/projects/placeholder.svg" alt="StrideIQ Wearable Gait Analysis System">
+                <div class="project-info">
+                    <h3>StrideIQ: Wearable Gait-Analysis System</h3>
+                    <p><em>Winter to Spring 2026 | Hardware &bull; Wearable Systems &bull; UCLA Senior Capstone, 5-person team</em></p>
+                    <p>
+                        A dual-foot wearable and cloud pipeline that turns raw motion-sensor data into per-foot running
+                        biomechanics, outdoors instead of in a lab. Clinical gait analysis is accurate but expensive and
+                        single-session, and consumer wearables track pace and heart rate but not the per-foot detail tied
+                        to running injuries. StrideIQ closes that gap for about $140 in parts per unit.
+                    </p>
+                    <ul>
+                        <li>Soldered and assembled the wearable node hardware (Arduino Nano RP2040, IMU, LiPo battery) and iterated through three enclosure and battery revisions to hit the weight and reliability targets</li>
+                        <li>Co-owned a serverless AWS backend (Cognito, AppSync, DynamoDB, S3, containerized Lambda) running a Butterworth-filtered gait pipeline for cadence, ground contact time, and stride asymmetry</li>
+                        <li>Ran a real-time architecture trade study across three AWS approaches before choosing WebSocket plus Lambda for live in-run feedback</li>
+                        <li>Diagnosed and fixed a DynamoDB write failure and an iOS background-execution bug that silently killed BLE and GPS</li>
+                        <li>Validated across 20 outdoor field trials against a Garmin Forerunner 965 and Apple Watch Ultra 2: 1.74% to 1.81% mean error on cadence and 2.14% on ground contact time, beating the team's stretch accuracy target</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- TickLink (research) -->
+            <div class="project-card"
+                 id="ticklink"
+                 data-category="research"
+                 data-rank-all="-3"
+                 data-rank-hardware="999"
+                 data-rank-software="999"
+                 data-rank-research="-1">
+                <img src="assets/images/projects/placeholder.svg" alt="TickLink Market Data Link Simulator">
+                <div class="project-info">
+                    <h3>TickLink: A Low-Latency Market-Data Link Simulator</h3>
+                    <p><em>Summer 2026, in progress | Research &bull; RF &amp; Signal Processing &bull; Personal Project</em></p>
+                    <p>
+                        A simulated point-to-point RF link modeling the microwave tower networks high-frequency trading
+                        firms use to shave microseconds off market-data delivery between financial hubs. Radio waves
+                        travel through air roughly 50% faster than light travels through fiber, and TickLink makes that
+                        tradeoff, and the engineering behind it, visible and tunable through a modular signal chain and
+                        an interactive dashboard.
+                    </p>
+                    <ul>
+                        <li>Built a swappable source, modulator, channel, and receiver chain supporting BPSK, QPSK, and 16-QAM with Gray coding and root-raised-cosine pulse shaping</li>
+                        <li>Modeled AWGN plus microwave-specific impairments (rain fade, multipath) with Gardner timing recovery, Costas carrier recovery, and zero-forcing equalization on receive</li>
+                        <li>Combined propagation delay and per-stage processing delay into a single end-to-end latency-budget model</li>
+                        <li>Shipped an interactive Streamlit dashboard with constellation and eye diagrams, a spectrum view, and BER-vs-SNR curves validated against theory</li>
+                        <li>Built entirely in pip-installable Python (NumPy, SciPy, Streamlit) to stay IDE-agnostic and Windows-native</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Nonlinear DC-DC Converter Control (hardware) -->
+            <div class="project-card"
+                 id="dc-dc-converter-control"
+                 data-category="hardware"
+                 data-rank-all="-2"
+                 data-rank-hardware="-2"
+                 data-rank-software="999"
+                 data-rank-research="999">
+                <img src="assets/images/projects/placeholder.svg" alt="Nonlinear DC-DC Converter Control">
+                <div class="project-info">
+                    <h3>Nonlinear DC-DC Converter Control</h3>
+                    <p><em>2025 | Hardware &bull; Power Electronics &amp; Controls &bull; UCLA (ECE 141)</em></p>
+                    <p>
+                        Full derivation, stability analysis, and controller design for a switched-mode power converter
+                        feeding a constant-power load, the kind of circuit found in railway signaling systems.
+                        Constant-power loads draw more current as voltage sags, behaving like negative resistance and
+                        destabilizing the system around them, so the task was to model that nonlinearity from first
+                        principles and design a controller meeting a strict no-overshoot, 0.05 second settling spec.
+                    </p>
+                    <ul>
+                        <li>Derived the nonlinear state-space model and linearized it to get a clean analytical stability condition, confirming a 1 k&Omega; / 20 W / 80 V operating point would be unstable exactly as the math predicted</li>
+                        <li>Designed a derivative-feedback controller by pole placement to a critically damped double pole, then converted it to a physically realizable state-feedback law</li>
+                        <li>Verified the design twice in Simulink: about 0.7 ms settling on the linearized model and about 1 ms on the full nonlinear model with saturation limits and a protected denominator</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- $0 Smartphone Spectrometer (hardware) -->
+            <div class="project-card"
+                 id="smartphone-spectrometer"
+                 data-category="hardware"
+                 data-rank-all="-1"
+                 data-rank-hardware="-1"
+                 data-rank-software="999"
+                 data-rank-research="999">
+                <img src="assets/images/projects/placeholder.svg" alt="Zero Dollar Smartphone Spectrometer">
+                <div class="project-info">
+                    <h3>$0 Smartphone Spectrometer</h3>
+                    <p><em>2025 | Hardware &bull; Optics &amp; Instrumentation &bull; UCLA (ECE 170A)</em></p>
+                    <p>
+                        A zero-cost handheld spectrometer built from a cardboard tube and a CD acting as a diffraction
+                        grating, used with a smartphone camera to identify two unknown light sources from their spectra
+                        with no lab equipment.
+                    </p>
+                    <ul>
+                        <li>Classified each spectrum qualitatively first, continuous band versus discrete lines, to distinguish LED-type sources from gas-discharge sources</li>
+                        <li>Measured RGB channel brightness from each photographed spectrum and used the R/B ratio as a proxy for color temperature</li>
+                        <li>Identified both unknown sources as white LEDs of different color temperature (R/B ratios of about 1.22 and 1.70), one cooler and one warmer</li>
+                        <li>Noted the method's real limitation: phone auto-exposure and slit alignment make the RGB ratios useful only for relative comparison, not absolute calibration</li>
+                    </ul>
+                </div>
+            </div>
+
             <!-- 1. EMI Sensor Calibration — CNSI 2024 (hardware) -->
             <div class="project-card"
+                 id="emi-sensor-calibration"
                  data-category="hardware"
                  data-rank-all="4"
                  data-rank-hardware="1"
@@ -130,7 +255,7 @@
                 <img src="assets/images/projects/xrd-instrumentation.png" alt="X-Ray Diffraction Instrumentation Module">
                 <div class="project-info">
                     <h3>X-Ray Diffraction Instrumentation Module</h3>
-                    <p><em>2023–2024 | Hardware • Instrumentation • California NanoSystems Institute</em></p>
+                    <p><em>2023 to 2024 | Hardware • Instrumentation • California NanoSystems Institute</em></p>
                     <p>
                         Designed, assembled, and validated a custom electronics module to interface with an
                         X-ray diffraction (XRD) system within CNSI's materials characterization facilities,
@@ -156,7 +281,7 @@
                 <img src="assets/images/projects/bioelectronics-research.png" alt="Bioelectronics">
                 <div class="project-info">
                     <h3>Flexible Class III Bioelectronic IC Research</h3>
-                    <p><em>2022–2023 | Research • Integrated Bioelectronics • UCLA</em></p>
+                    <p><em>2022 to 2023 | Research • Integrated Bioelectronics • UCLA</em></p>
                     <p>
                         Contributed to a UCLA Integrated Bioelectronics research effort developing stretchable,
                         medical-grade circuits for physiological sensing and stimulation in collaboration
@@ -181,14 +306,14 @@
                 <img src="assets/images/projects/radar-signal-processing.png" alt="Radar Processing">
                 <div class="project-info">
                     <h3>Radar Signal Processing Toolkit</h3>
-                    <p><em>2023–2024 | Research • Radar • University of Arizona</em></p>
+                    <p><em>2023 to 2024 | Research • Radar • University of Arizona</em></p>
                     <p>
                         Collaborated with graduate students in the University of Arizona's radar and signal
                         processing group to build Python tooling for interpreting raw radar data and tracking
                         motion in 3D.
                     </p>
                     <ul>
-                        <li>Decoded raw bit-level radar frames into structured range–Doppler datasets using Python</li>
+                        <li>Decoded raw bit-level radar frames into structured range-Doppler datasets using Python</li>
                         <li>Implemented matrix-based DSP operations for object detection and motion tracking</li>
                         <li>Prototyped 3D trajectory visualizations to debug and analyze radar scenarios</li>
                         <li>Helped streamline research workflows by wrapping core algorithms into reusable scripts</li>
@@ -205,11 +330,11 @@
                  data-rank-research="4">
                 <img src="assets/images/projects/notch-filter.png" alt="10 kHz Notch Filter">
                 <div class="project-info">
-                    <h3>10 kHz Active Notch Filter — Analog Design</h3>
+                    <h3>10 kHz Active Notch Filter: Analog Design</h3>
                     <p><em>2024 | Hardware • Circuit Design • UCLA </em></p>
                     <p>
                         Designed and analyzed a narrowband active notch filter to suppress SMPS-induced noise
-                        in the 10 Hz–50 kHz audio band while maintaining a stable output from a current-source input.
+                        in the 10 Hz to 50 kHz audio band while maintaining a stable output from a current-source input.
                     </p>
                     <ul>
                         <li>Achieved &gt;74 dB stopband attenuation at 10 kHz with &lt;2 kHz notch bandwidth</li>
@@ -222,6 +347,7 @@
 
             <!-- 6. BruinBuzz iOS App (software) -->
             <div class="project-card"
+                 id="bruinbuzz-ios-app"
                  data-category="software"
                  data-rank-all="6"
                  data-rank-hardware="999"
@@ -229,7 +355,7 @@
                  data-rank-research="7">
                 <img src="assets/images/projects/bruinbuzz-ios-app.png" alt="BruinBuzz App">
                 <div class="project-info">
-                    <h3>BruinBuzz — UCLA iOS Club App</h3>
+                    <h3>BruinBuzz: UCLA iOS Club App</h3>
                     <p><em>2024 | Software • iOS • UCLA</em></p>
                     <p>
                         Shipped an iOS app for UCLA clubs, enabling students to discover and follow organizations
@@ -238,7 +364,7 @@
                     <ul>
                         <li>Implemented Firebase Auth, Firestore, and Storage integrations using Swift</li>
                         <li>Handled real-time data flows for club posts, event updates, and user subscriptions</li>
-                        <li>Coordinated a 4-person dev team, handling 20–30 hrs/week of full-stack development</li>
+                        <li>Coordinated a 4-person dev team, handling 20 to 30 hrs/week of full-stack development</li>
                         <li>Deployed to the Apple App Store and reached 150+ early downloads from UCLA students</li>
                     </ul>
                 </div>
@@ -246,6 +372,7 @@
 
             <!-- Bank of America SQL Automation Platform (software) -->
             <div class="project-card"
+                 id="sql-automation-platform"
                  data-category="software"
                  data-rank-all="1"
                  data-rank-hardware="999"
@@ -328,8 +455,8 @@
                  data-rank-research="11">
                 <img src="assets/images/projects/arch-linux-setup.png" alt="Arch Linux Setup">
                 <div class="project-info">
-                    <h3>Arch Linux — Daily Driver System Build</h3>
-                    <p><em>2023–Present | Software • Personal Project</em></p>
+                    <h3>Arch Linux: Daily Driver System Build</h3>
+                    <p><em>2023 to Present | Software • Personal Project</em></p>
                     <p>
                         Built and maintain a custom Arch Linux workstation as my primary environment for coursework at UCLA,
                         research work at CNSI, and development during my Bank of America internship.

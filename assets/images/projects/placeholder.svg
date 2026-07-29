@@ -1,0 +1,18 @@
+<svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#1b263b"/>
+            <stop offset="100%" stop-color="#0d1b2a"/>
+        </linearGradient>
+    </defs>
+    <rect width="600" height="400" fill="url(#bg)"/>
+    <g stroke="rgba(255,255,255,0.12)" stroke-width="1.5">
+        <line x1="0" y1="80" x2="600" y2="80"/>
+        <line x1="0" y1="320" x2="600" y2="320"/>
+        <line x1="150" y1="0" x2="150" y2="400"/>
+        <line x1="450" y1="0" x2="450" y2="400"/>
+    </g>
+    <circle cx="300" cy="200" r="46" fill="none" stroke="#ffdd57" stroke-width="3"/>
+    <path d="M300 168 v64 M268 200 h64" stroke="#ffdd57" stroke-width="3" stroke-linecap="round"/>
+    <text x="300" y="286" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" fill="rgba(255,255,255,0.75)">Image coming soon</text>
+</svg>

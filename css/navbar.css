@@ -16,17 +16,30 @@ header {
 }
 
 header.transparent {
-    background-color: transparent;
+    background-color: rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(4px);
 }
 
 header.solid {
-    background-color: rgba(51, 51, 51, 0.9);
+    background-color: var(--header-solid-bg);
 }
 
 .logo h1 {
     font-size: 1.5rem;
     color: #fff;
     margin: 0;
+}
+
+/* Once the header goes solid, text follows the active theme */
+header.solid .logo h1,
+header.solid nav ul li a {
+    color: var(--header-text);
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 16px;
 }
 
 nav ul {
@@ -56,17 +69,56 @@ nav ul li a:hover {
     text-decoration: underline;
 }
 
+/* Theme toggle button */
+.theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255, 255, 255, 0.4);
+    background-color: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    font-size: 1rem;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0;
+    flex-shrink: 0;
+    transition: transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+}
+
+header.solid .theme-toggle {
+    color: var(--header-text);
+    border-color: var(--border-on-dark);
+}
+
+.theme-toggle:hover {
+    transform: translateY(-2px) rotate(12deg);
+    background-color: rgba(255, 255, 255, 0.18);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .theme-toggle:hover {
+        transform: none;
+    }
+}
+
 /* Mobile */
 @media (max-width: 768px) {
     header { padding: 0.5rem 0.6rem; }
     .logo h1 { font-size: 1.15rem; }
+    nav { gap: 10px; }
     nav ul { gap: 8px; }
     nav ul li a { font-size: 0.78rem; }
+    .theme-toggle { width: 30px; height: 30px; font-size: 0.9rem; }
 }
 
 @media (max-width: 520px) {
     header { padding: 0.35rem 0.5rem; }
     .logo h1 { font-size: 0.95rem; }
+    nav { gap: 6px; }
     nav ul { gap: 4px; }
     nav ul li a { font-size: 0.7rem; letter-spacing: 0; }
+    .theme-toggle { width: 26px; height: 26px; font-size: 0.8rem; }
 }

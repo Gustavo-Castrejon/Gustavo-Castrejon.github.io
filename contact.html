@@ -5,6 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- Apply saved theme before first paint to avoid a flash -->
+    <script>
+        (function () {
+            var theme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
+
+    <!-- Shared theme variables -->
+    <link rel="stylesheet" href="css/theme.css">
+
     <!-- Global unified navbar CSS -->
     <link rel="stylesheet" href="css/navbar.css">
 
@@ -31,6 +42,9 @@
                 <li><a href="resume.html">Resume</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle light and dark theme" type="button">
+                <span class="theme-toggle-icon"></span>
+            </button>
         </nav>
     </header>
 

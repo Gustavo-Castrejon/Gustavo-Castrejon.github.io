@@ -22,13 +22,14 @@ main {
 
 /* Footer Styling */
 footer {
-    background-color: #333;
-    color: white;
+    background-color: var(--surface-charcoal);
+    color: var(--text-on-dark);
     text-align: center;
     padding: 1rem 0;
     width: 100%;
     position: relative;
     left: 0;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 footer p {
@@ -161,19 +162,20 @@ footer p {
     width: 100%;
     margin: 0 auto;
 
-    /* was solid white, now translucent dark glass */
-    background-color: rgba(0, 0, 0, 0.35);
+    /* translucent glass panel, flips with theme */
+    background-color: var(--glass-panel);
     border-radius: 16px;
     box-shadow: 0 18px 45px rgba(0, 0, 0, 0.45);
     backdrop-filter: blur(3px);
-    border: 1px solid rgba(255, 255, 255, 0.18);
+    border: 1px solid var(--border-on-dark);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .contact-section h2 {
     text-align: center;
     margin: 0 0 12px 0;
     font-size: 2.5rem;
-    color: #ffffff;
+    color: var(--text-on-dark);
     font-weight: 600;
     letter-spacing: -0.5px;
 }
@@ -182,7 +184,7 @@ footer p {
     text-align: center;
     margin: 0 0 40px 0;
     font-size: 1.1rem;
-    color: rgba(255, 255, 255, 0.85);
+    color: var(--text-on-dark-soft);
     line-height: 1.6;
 }
 
@@ -200,19 +202,19 @@ footer p {
     align-items: center;
     padding: 20px 24px;
 
-    /* semi-transparent tiles instead of solid white */
-    background-color: rgba(0, 0, 0, 0.40);
+    /* semi-transparent tiles, flip with theme */
+    background-color: var(--glass-panel-strong);
     border-radius: 12px;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
     transition: all 0.3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    border: 1px solid var(--border-on-dark);
     width: 100%;
     box-sizing: border-box;
 }
 
 .contact-item:hover,
 .hometown-item:hover {
-    background-color: rgba(0, 0, 0, 0.55);
+    background-color: var(--glass-panel-hover);
     transform: translateY(-2px);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     border-color: rgba(132, 220, 255, 0.5);
@@ -254,7 +256,7 @@ footer p {
 
 .contact-item a {
     font-size: 1.15rem;
-    color: #e5f7ff;
+    color: var(--text-on-dark);
     text-decoration: none;
     font-weight: 500;
     transition: color 0.3s ease;
@@ -262,12 +264,11 @@ footer p {
 }
 
 .contact-item a:hover {
-    color: #ffffff;
     text-decoration: underline;
 }
 
 .hometown-item p {
     font-size: 1.1rem;
-    color: #f5f5f5;
+    color: var(--text-on-dark-soft);
     margin: 0;
 }

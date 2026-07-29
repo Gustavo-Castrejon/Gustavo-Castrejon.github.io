@@ -1,0 +1,81 @@
+/* Theme tokens: dark (default) and light, toggled via [data-theme] on <html> */
+
+:root {
+    /* Flat dark surfaces (stats strip, projects page body, header solid, footer) */
+    --surface-navy: #0d1b2a;
+    --surface-navy-card: #1b263b;
+    --surface-charcoal: #333;
+
+    /* Light-mode replacements for the surfaces above */
+    --surface-navy-light: #eef1f5;
+    --surface-navy-card-light: #ffffff;
+    --surface-charcoal-light: #eef1f5;
+
+    /* Text sitting on dark surfaces vs. their light replacements */
+    --text-on-dark: #ffffff;
+    --text-on-dark-soft: rgba(255, 255, 255, 0.85);
+    --text-on-dark-softer: rgba(255, 255, 255, 0.7);
+    --text-on-dark-faint: rgba(255, 255, 255, 0.55);
+    --text-on-dark-light-mode: #16283d;
+    --text-on-dark-soft-light-mode: rgba(22, 40, 61, 0.85);
+    --text-on-dark-softer-light-mode: rgba(22, 40, 61, 0.65);
+    --text-on-dark-faint-light-mode: rgba(22, 40, 61, 0.5);
+
+    /* Already-light surfaces (About Me, Featured Projects) stay constant */
+    --surface-light: #f4f4f4;
+    --surface-white: #ffffff;
+    --text-on-light: #222;
+    --text-on-light-soft: #444;
+
+    /* Glass panels over photo backgrounds (Contact, Resume) */
+    --glass-panel: rgba(0, 0, 0, 0.35);
+    --glass-panel-strong: rgba(0, 0, 0, 0.4);
+    --glass-panel-hover: rgba(0, 0, 0, 0.55);
+    --glass-panel-light: rgba(255, 255, 255, 0.6);
+    --glass-panel-strong-light: rgba(255, 255, 255, 0.7);
+    --glass-panel-hover-light: rgba(255, 255, 255, 0.85);
+
+    /* Borders */
+    --border-on-dark: rgba(255, 255, 255, 0.15);
+    --border-on-dark-light-mode: rgba(0, 0, 0, 0.12);
+
+    /* Header, once scrolled past the hero */
+    --header-solid-bg: rgba(51, 51, 51, 0.9);
+    --header-solid-bg-light-mode: rgba(255, 255, 255, 0.92);
+    --header-text: #ffffff;
+    --header-text-light-mode: #16283d;
+
+    /* Full-page dark wash over the Resume page's photo background */
+    --photo-overlay: rgba(0, 0, 0, 0.5);
+    --photo-overlay-light-mode: rgba(255, 255, 255, 0.72);
+
+    /* Subtle fills for small UI chrome (toggle buttons, labels) */
+    --ui-fill: rgba(255, 255, 255, 0.1);
+    --ui-fill-light-mode: rgba(0, 0, 0, 0.06);
+    --ui-fill-hover: rgba(255, 255, 255, 0.2);
+    --ui-fill-hover-light-mode: rgba(0, 0, 0, 0.12);
+}
+
+:root[data-theme="light"] {
+    --surface-navy: var(--surface-navy-light);
+    --surface-navy-card: var(--surface-navy-card-light);
+    --surface-charcoal: var(--surface-charcoal-light);
+
+    --text-on-dark: var(--text-on-dark-light-mode);
+    --text-on-dark-soft: var(--text-on-dark-soft-light-mode);
+    --text-on-dark-softer: var(--text-on-dark-softer-light-mode);
+    --text-on-dark-faint: var(--text-on-dark-faint-light-mode);
+
+    --glass-panel: var(--glass-panel-light);
+    --glass-panel-strong: var(--glass-panel-strong-light);
+    --glass-panel-hover: var(--glass-panel-hover-light);
+
+    --border-on-dark: var(--border-on-dark-light-mode);
+
+    --header-solid-bg: var(--header-solid-bg-light-mode);
+    --header-text: var(--header-text-light-mode);
+
+    --photo-overlay: var(--photo-overlay-light-mode);
+    --ui-fill: var(--ui-fill-light-mode);
+    --ui-fill-hover: var(--ui-fill-hover-light-mode);
+}

@@ -4,6 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- Apply saved theme before first paint to avoid a flash -->
+    <script>
+        (function () {
+            var theme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
+
+    <!-- Shared theme variables -->
+    <link rel="stylesheet" href="css/theme.css">
+
     <!-- Global unified navbar CSS -->
     <link rel="stylesheet" href="css/navbar.css">
 
@@ -28,6 +39,9 @@
                 <li><a href="resume.html">Resume</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle light and dark theme" type="button">
+                <span class="theme-toggle-icon"></span>
+            </button>
         </nav>
     </header>
 
@@ -35,16 +49,85 @@
     <section class="hero">
         <div class="overlay">
             <h1>Gustavo Castrejon</h1>
-            <h2>Electrical Engineer</h2>
-            <a href="https://www.linkedin.com/in/gustavo-castrejon-87b884251"
-               target="_blank"
-               class="btn-linkedin">
-                <img src="assets/images/logos/linkedin.png" alt="LinkedIn Logo" class="linkedin-logo">
-            </a>
+            <h2>Electrical Engineer building software-driven systems</h2>
+
+            <div class="hero-cta">
+                <a href="projects.html" class="cta-btn cta-solid-light">View Projects</a>
+                <a href="resume.html" class="cta-btn cta-outline-light">Resume</a>
+                <a href="https://www.linkedin.com/in/gustavo-castrejon-87b884251"
+                   target="_blank"
+                   class="btn-linkedin">
+                    <img src="assets/images/logos/linkedin.png" alt="LinkedIn Logo" class="linkedin-logo">
+                </a>
+            </div>
+
             <p class="contact-message">
-                I am open for any new opportunities!<br>
-                If you would like to contact me, I will do my best to get back to you as soon as possible.
+                Open to new opportunities and always happy to connect.
             </p>
+        </div>
+    </section>
+
+    <!-- Quick-glance Stats / Credibility Strip -->
+    <section class="stats-strip">
+        <div class="stats-container">
+            <div class="stat-item reveal">
+                <span class="stat-number">3+</span>
+                <span class="stat-label">Research &amp; Industry Roles</span>
+            </div>
+            <div class="stat-item reveal">
+                <span class="stat-number">15</span>
+                <span class="stat-label">Projects Shipped</span>
+            </div>
+            <div class="stat-item reveal">
+                <span class="stat-number">2</span>
+                <span class="stat-label">Disciplines: EE + SWE</span>
+            </div>
+            <div class="stat-item reveal">
+                <span class="stat-number">UCLA</span>
+                <span class="stat-label">Class of 2026</span>
+            </div>
+        </div>
+        <p class="stats-companies">Bank of America &middot; UCLA CNSI &middot; University of Arizona</p>
+    </section>
+
+    <!-- Featured Projects -->
+    <section class="featured-projects">
+        <div class="featured-projects-header">
+            <h2>Featured Projects</h2>
+            <p>A mix of hardware, software, and full-stack work, spanning enterprise systems, research, and a shipped app.</p>
+        </div>
+
+        <div class="featured-projects-grid">
+            <a class="featured-project-card reveal" href="projects.html#sql-automation-platform">
+                <img src="assets/images/projects/sql-automation-platform.png" alt="Enterprise SQL Server Automation Platform">
+                <div class="featured-project-info">
+                    <span class="featured-project-tag">Software &middot; Bank of America</span>
+                    <h3>Enterprise SQL Server Automation Platform</h3>
+                    <p>Automated access control across 1,000+ SQL Server databases, cutting manual workload ~70%.</p>
+                </div>
+            </a>
+
+            <a class="featured-project-card reveal" href="projects.html#strideiq">
+                <img src="assets/images/projects/placeholder.svg" alt="StrideIQ Wearable Gait Analysis System">
+                <div class="featured-project-info">
+                    <span class="featured-project-tag">Hardware &middot; UCLA Senior Capstone</span>
+                    <h3>StrideIQ: Wearable Gait-Analysis System</h3>
+                    <p>Dual-foot wearable and AWS cloud pipeline validated to 1.74% cadence error across 20 field trials.</p>
+                </div>
+            </a>
+
+            <a class="featured-project-card reveal" href="projects.html#bruinbuzz-ios-app">
+                <img src="assets/images/projects/bruinbuzz-ios-app.png" alt="BruinBuzz iOS App">
+                <div class="featured-project-info">
+                    <span class="featured-project-tag">Software &middot; UCLA iOS Club</span>
+                    <h3>BruinBuzz: UCLA iOS Club App</h3>
+                    <p>Shipped to the App Store, leading a 4-person team building live club-discovery features.</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="featured-projects-footer">
+            <a href="projects.html" class="cta-btn cta-solid-dark">View All Projects</a>
         </div>
     </section>
 
@@ -52,14 +135,14 @@
     <main>
         <section class="about-me-section">
             <div class="about-container">
-                <div class="about-photo">
+                <div class="about-photo reveal">
                     <img src="assets/images/profile/headshot.png" alt="Gustavo Castrejon">
                 </div>
-                <div class="about-text">
+                <div class="about-text reveal">
                     <h2>About Me</h2>
-                    <p>Hola, I'm Gustavo Castrejon — a first-generation Mexican-American engineering student at UCLA expecting to graduate soon, with experience across both hardware and software. My interest in engineering started young, taking things apart, fixing electronics, and learning hands-on skills from my abuelo. Over time, that early curiosity grew into a passion for solving problems, designing systems, and building things that make a real impact.</p>
+                    <p>Hola, I'm Gustavo Castrejon, a first-generation Mexican-American engineering student at UCLA expecting to graduate soon, with experience across both hardware and software. My interest in engineering started young, taking things apart, fixing electronics, and learning hands-on skills from my abuelo. Over time, that early curiosity grew into a passion for solving problems, designing systems, and building things that make a real impact.</p>
                     <p>I've worked on projects involving circuit design, prototyping, software development, and automation through my recent work experience. I enjoy roles that challenge me, push me to learn, and let me apply both sides of my engineering background.</p>
-                    <p>As I approach graduation, I'm exploring a wide range of opportunities across engineering and keeping an open mind about where I can contribute the most. Thank you for checking out my portfolio — I'm always happy to connect.</p>
+                    <p>As I approach graduation, I'm exploring a wide range of opportunities across engineering and keeping an open mind about where I can contribute the most. Thank you for checking out my portfolio. I'm always happy to connect.</p>
                 </div>
             </div>
         </section>
@@ -75,6 +158,9 @@
 
     <!-- Unified Scroll Behavior -->
     <script src="js/navbar.js"></script>
+
+    <!-- Home Page Scroll-Reveal Animations -->
+    <script src="js/scroll-reveal.js"></script>
 
 </body>
 </html>
