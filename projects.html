@@ -5,6 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+
+    <!-- Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
     <!-- Apply saved theme before first paint to avoid a flash -->
     <script>
         (function () {
@@ -62,63 +70,51 @@
             <div class="about-text">
                 <h2>How I Approach Engineering Projects</h2>
                 <p>
-                    I like working on projects where I can build something real, break it a little, and make it better.
-                    Whether it's hardware or software, I focus on understanding what the system is supposed to do and how to make it more solid.
+                    I care about understanding a system well enough to know exactly why it works, not just that it does.
+                    Across hardware and software alike, my process stays the same: define the real problem, build the
+                    simplest version that proves it out, then iterate until it holds up under real conditions.
                 </p>
                 <p>
-                    I try to keep things practical: start with a clear goal, sketch a simple approach, get a first version working,
-                    and then improve it step by step. This page is just a snapshot of that process.
+                    The projects below span RF and embedded hardware, full-stack software, and applied research.
+                    Together they reflect how I actually work: hands-on, detail-oriented, and comfortable moving
+                    between disciplines.
                 </p>
             </div>
         </section>
 
-        <!-- FILTER BAR -->
-        <div class="filter-bar">
-            <button class="active" data-filter="all">All</button>
-            <button data-filter="hardware">Hardware</button>
-            <button data-filter="software">Software</button>
-            <button data-filter="research">Research</button>
-        </div>
-
-        <!-- PROJECT LIST -->
+        <!-- PROJECT LIST — ordered by technical difficulty, hardest first -->
         <section class="projects-list">
 
-            <!-- StrideIQ (hardware) -->
-            <div class="project-card"
-                 id="strideiq"
-                 data-category="hardware"
-                 data-rank-all="-4"
-                 data-rank-hardware="-3"
-                 data-rank-software="999"
-                 data-rank-research="999">
-                <img src="assets/images/projects/placeholder.svg" alt="StrideIQ Wearable Gait Analysis System">
+            <!-- Nonlinear DC-DC Converter Control -->
+            <div class="project-card reveal"
+                 id="dc-dc-converter-control">
+                <img src="assets/images/projects/placeholder.svg" alt="Nonlinear DC-DC Converter Control">
                 <div class="project-info">
-                    <h3>StrideIQ: Wearable Gait-Analysis System</h3>
-                    <p><em>Winter to Spring 2026 | Hardware &bull; Wearable Systems &bull; UCLA Senior Capstone, 5-person team</em></p>
+                    <h3>Nonlinear DC-DC Converter Control</h3>
+                    <p><em>2025 | Hardware &bull; Power Electronics &amp; Controls &bull; UCLA (ECE 141)</em></p>
                     <p>
-                        A dual-foot wearable and cloud pipeline that turns raw motion-sensor data into per-foot running
-                        biomechanics, outdoors instead of in a lab. Clinical gait analysis is accurate but expensive and
-                        single-session, and consumer wearables track pace and heart rate but not the per-foot detail tied
-                        to running injuries. StrideIQ closes that gap for about $140 in parts per unit.
+                        Full derivation, stability analysis, and controller design for a switched-mode power converter
+                        feeding a constant-power load, the kind of circuit found in railway signaling systems.
+                        Constant-power loads draw more current as voltage sags, behaving like negative resistance and
+                        destabilizing the system around them, so the task was to model that nonlinearity from first
+                        principles and design a controller meeting a strict no-overshoot, 0.05 second settling spec.
                     </p>
                     <ul>
-                        <li>Soldered and assembled the wearable node hardware (Arduino Nano RP2040, IMU, LiPo battery) and iterated through three enclosure and battery revisions to hit the weight and reliability targets</li>
-                        <li>Co-owned a serverless AWS backend (Cognito, AppSync, DynamoDB, S3, containerized Lambda) running a Butterworth-filtered gait pipeline for cadence, ground contact time, and stride asymmetry</li>
-                        <li>Ran a real-time architecture trade study across three AWS approaches before choosing WebSocket plus Lambda for live in-run feedback</li>
-                        <li>Diagnosed and fixed a DynamoDB write failure and an iOS background-execution bug that silently killed BLE and GPS</li>
-                        <li>Validated across 20 outdoor field trials against a Garmin Forerunner 965 and Apple Watch Ultra 2: 1.74% to 1.81% mean error on cadence and 2.14% on ground contact time, beating the team's stretch accuracy target</li>
+                        <li>Derived the nonlinear state-space model and linearized it to get a clean analytical stability condition, confirming a 1 k&Omega; / 20 W / 80 V operating point would be unstable exactly as the math predicted</li>
+                        <li>Designed a derivative-feedback controller by pole placement to a critically damped double pole, then converted it to a physically realizable state-feedback law</li>
+                        <li>Verified the design twice in Simulink: about 0.7 ms settling on the linearized model and about 1 ms on the full nonlinear model with saturation limits and a protected denominator</li>
                     </ul>
+                    <div class="tech-tags">
+                        <span class="tech-tag">MATLAB</span>
+                        <span class="tech-tag">Simulink</span>
+                        <span class="tech-tag">Control Theory</span>
+                    </div>
                 </div>
             </div>
 
-            <!-- TickLink (research) -->
-            <div class="project-card"
-                 id="ticklink"
-                 data-category="research"
-                 data-rank-all="-3"
-                 data-rank-hardware="999"
-                 data-rank-software="999"
-                 data-rank-research="-1">
+            <!-- TickLink -->
+            <div class="project-card reveal"
+                 id="ticklink">
                 <img src="assets/images/projects/placeholder.svg" alt="TickLink Market Data Link Simulator">
                 <div class="project-info">
                     <h3>TickLink: A Low-Latency Market-Data Link Simulator</h3>
@@ -137,44 +133,309 @@
                         <li>Shipped an interactive Streamlit dashboard with constellation and eye diagrams, a spectrum view, and BER-vs-SNR curves validated against theory</li>
                         <li>Built entirely in pip-installable Python (NumPy, SciPy, Streamlit) to stay IDE-agnostic and Windows-native</li>
                     </ul>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">NumPy</span>
+                        <span class="tech-tag">SciPy</span>
+                        <span class="tech-tag">Streamlit</span>
+                    </div>
                 </div>
             </div>
 
-            <!-- Nonlinear DC-DC Converter Control (hardware) -->
-            <div class="project-card"
-                 id="dc-dc-converter-control"
-                 data-category="hardware"
-                 data-rank-all="-2"
-                 data-rank-hardware="-2"
-                 data-rank-software="999"
-                 data-rank-research="999">
-                <img src="assets/images/projects/placeholder.svg" alt="Nonlinear DC-DC Converter Control">
+            <!-- StrideIQ -->
+            <div class="project-card reveal"
+                 id="strideiq">
+                <img src="assets/images/projects/placeholder.svg" alt="StrideIQ Wearable Gait Analysis System">
                 <div class="project-info">
-                    <h3>Nonlinear DC-DC Converter Control</h3>
-                    <p><em>2025 | Hardware &bull; Power Electronics &amp; Controls &bull; UCLA (ECE 141)</em></p>
+                    <h3>StrideIQ: Wearable Gait-Analysis System</h3>
+                    <p><em>Winter to Spring 2026 | Hardware &bull; Wearable Systems &bull; UCLA Senior Capstone, 5-person team</em></p>
                     <p>
-                        Full derivation, stability analysis, and controller design for a switched-mode power converter
-                        feeding a constant-power load, the kind of circuit found in railway signaling systems.
-                        Constant-power loads draw more current as voltage sags, behaving like negative resistance and
-                        destabilizing the system around them, so the task was to model that nonlinearity from first
-                        principles and design a controller meeting a strict no-overshoot, 0.05 second settling spec.
+                        A dual-foot wearable and cloud pipeline that turns raw motion-sensor data into per-foot running
+                        biomechanics, outdoors instead of in a lab. Clinical gait analysis is accurate but expensive and
+                        single-session, and consumer wearables track pace and heart rate but not the per-foot detail tied
+                        to running injuries. StrideIQ closes that gap for about $140 in parts per unit.
                     </p>
                     <ul>
-                        <li>Derived the nonlinear state-space model and linearized it to get a clean analytical stability condition, confirming a 1 k&Omega; / 20 W / 80 V operating point would be unstable exactly as the math predicted</li>
-                        <li>Designed a derivative-feedback controller by pole placement to a critically damped double pole, then converted it to a physically realizable state-feedback law</li>
-                        <li>Verified the design twice in Simulink: about 0.7 ms settling on the linearized model and about 1 ms on the full nonlinear model with saturation limits and a protected denominator</li>
+                        <li>Soldered and assembled the wearable node hardware (Arduino Nano RP2040, IMU, LiPo battery) and iterated through three enclosure and battery revisions to hit the weight and reliability targets</li>
+                        <li>Co-owned a serverless AWS backend (Cognito, AppSync, DynamoDB, S3, containerized Lambda) running a Butterworth-filtered gait pipeline for cadence, ground contact time, and stride asymmetry</li>
+                        <li>Ran a real-time architecture trade study across three AWS approaches before choosing WebSocket plus Lambda for live in-run feedback</li>
+                        <li>Diagnosed and fixed a DynamoDB write failure and an iOS background-execution bug that silently killed BLE and GPS</li>
+                        <li>Validated across 20 outdoor field trials against a Garmin Forerunner 965 and Apple Watch Ultra 2: 1.74% to 1.81% mean error on cadence and 2.14% on ground contact time, beating the team's stretch accuracy target</li>
                     </ul>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Arduino RP2040</span>
+                        <span class="tech-tag">IMU / BLE</span>
+                        <span class="tech-tag">AWS</span>
+                        <span class="tech-tag">SwiftUI</span>
+                        <span class="tech-tag">Python</span>
+                    </div>
                 </div>
             </div>
 
-            <!-- $0 Smartphone Spectrometer (hardware) -->
-            <div class="project-card"
-                 id="smartphone-spectrometer"
-                 data-category="hardware"
-                 data-rank-all="-1"
-                 data-rank-hardware="-1"
-                 data-rank-software="999"
-                 data-rank-research="999">
+            <!-- 10 kHz Active Notch Filter -->
+            <div class="project-card reveal">
+                <img src="assets/images/projects/notch-filter.png" alt="10 kHz Notch Filter">
+                <div class="project-info">
+                    <h3>10 kHz Active Notch Filter: Analog Design</h3>
+                    <p><em>2024 | Hardware &bull; Circuit Design &bull; UCLA</em></p>
+                    <p>
+                        Designed and analyzed a narrowband active notch filter to suppress SMPS-induced noise
+                        in the 10 Hz to 50 kHz audio band while maintaining a stable output from a current-source input.
+                    </p>
+                    <ul>
+                        <li>Achieved &gt;74 dB stopband attenuation at 10 kHz with &lt;2 kHz notch bandwidth</li>
+                        <li>Met a 10 k&Omega; passband transimpedance target (100 mV from 10 &micro;A input current)</li>
+                        <li>Derived and applied closed-form design equations under realistic inductor and resistor limits</li>
+                        <li>Validated behavior using SPICE-style simulations and lab-style calculations</li>
+                    </ul>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Analog Design</span>
+                        <span class="tech-tag">SPICE</span>
+                        <span class="tech-tag">Circuit Design</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Flexible Class III Bioelectronic IC Research -->
+            <div class="project-card reveal">
+                <img src="assets/images/projects/bioelectronics-research.png" alt="Bioelectronics">
+                <div class="project-info">
+                    <h3>Flexible Class III Bioelectronic IC Research</h3>
+                    <p><em>2022 to 2023 | Research &bull; Integrated Bioelectronics &bull; UCLA</em></p>
+                    <p>
+                        Contributed to a UCLA Integrated Bioelectronics research effort developing stretchable,
+                        medical-grade circuits for physiological sensing and stimulation in collaboration
+                        with engineers and physicians.
+                    </p>
+                    <ul>
+                        <li>Performed voltage tolerance, thermal endurance, and fatigue testing on flexible ICs</li>
+                        <li>Modeled analog behavior and stress response using LTspice and MATLAB</li>
+                        <li>Helped validate device reliability under strain for potential clinical applications</li>
+                        <li>Worked with cross-disciplinary teams at UCLA bridging EE, bioengineering, and medicine</li>
+                    </ul>
+                    <div class="tech-tags">
+                        <span class="tech-tag">LTspice</span>
+                        <span class="tech-tag">MATLAB</span>
+                        <span class="tech-tag">Bioelectronics</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- X-Ray Diffraction Instrumentation Module -->
+            <div class="project-card reveal">
+                <img src="assets/images/projects/xrd-instrumentation.png" alt="X-Ray Diffraction Instrumentation Module">
+                <div class="project-info">
+                    <h3>X-Ray Diffraction Instrumentation Module</h3>
+                    <p><em>2023 to 2024 | Hardware &bull; Instrumentation &bull; California NanoSystems Institute</em></p>
+                    <p>
+                        Designed, assembled, and validated a custom electronics module to interface with an
+                        X-ray diffraction (XRD) system within CNSI's materials characterization facilities,
+                        taking the design from breadboard prototype to a lab-installed instrument.
+                    </p>
+                    <ul>
+                        <li>Soldered and assembled mixed through-hole and SMT components into a reliable module</li>
+                        <li>Migrated the design from temporary breadboard wiring to a robust lab-ready hardware unit</li>
+                        <li>Characterized and tested subcircuits using multimeters and oscilloscopes before integration</li>
+                        <li>Verified signal integrity and isolation to ensure safe operation around high-voltage XRD hardware</li>
+                        <li>Collaborated with CNSI staff and researchers to tune performance for real experimental workflows</li>
+                    </ul>
+                    <div class="tech-tags">
+                        <span class="tech-tag">PCB Assembly</span>
+                        <span class="tech-tag">Analog Circuits</span>
+                        <span class="tech-tag">Instrumentation</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- EMI Sensor Calibration & Radar Simulation -->
+            <div class="project-card reveal"
+                 id="emi-sensor-calibration">
+                <img src="assets/images/projects/emi-sensor-calibration.png" alt="EMI Sensor Calibration 2024">
+                <div class="project-info">
+                    <h3>EMI Sensor Calibration &amp; Radar Simulation</h3>
+                    <p><em>2024 | Hardware &bull; Signal Processing &bull; California NanoSystems Institute</em></p>
+                    <p>
+                        Built a calibration and analysis pipeline for multi-axis EMI sensors used in
+                        radar-inspired research at the California NanoSystems Institute (CNSI), combining
+                        Python-based tooling with signal-processing workflows.
+                    </p>
+                    <ul>
+                        <li>Automated calibration for 50+ multi-axis EMI sensor systems, replacing manual lab routines</li>
+                        <li>Improved sensor accuracy and noise stability by ~60% using Python, NumPy, and SciPy</li>
+                        <li>Integrated real-time data visualization to debug interference patterns and long-term drift</li>
+                        <li>Collaborated with CNSI researchers working on RF, EMI/EMC, and radar applications</li>
+                    </ul>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">NumPy</span>
+                        <span class="tech-tag">SciPy</span>
+                        <span class="tech-tag">Signal Processing</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PTO Compliance Dashboard -->
+            <div class="project-card reveal"
+                 id="pto-compliance-dashboard">
+                <img src="assets/images/projects/placeholder.svg" alt="PTO Compliance Dashboard">
+                <div class="project-info">
+                    <h3>PTO Compliance Dashboard</h3>
+                    <p><em>Summer 2026 | Software Engineering &bull; Business Intelligence &bull; Bank of America</em></p>
+                    <p>
+                        Architected an end-to-end BI platform that replaced a fragmented, manual SQL script validation
+                        process with a live, enterprise-grade compliance monitoring system, giving the team real-time,
+                        cross-server visibility into a stored procedure that used to require ad hoc script interpretation.
+                    </p>
+                    <ul>
+                        <li>Designed and deployed two production BI deliverables: a real-time operational dashboard with color-coded pass/fail indicators and multi-dimensional slicers, plus a historical analytics suite for execution-frequency tracking and automated configuration-drift detection</li>
+                        <li>Engineered custom Power Query ETL pipelines to transform an EAV-structured source, a schema poorly suited to BI tooling, into a clean, analytics-ready model through custom status-normalization and server-identity merge logic</li>
+                        <li>Reverse-engineered backend ActionID parameter logic and mapped it directly to purpose-built dashboard features, bridging raw procedural output and stakeholder-ready reporting</li>
+                        <li>Led a QA and DAX logic audit that caught a mislabeled core metric and a silent mismatch between automated and manual delta-comparison views before it reached decision-makers</li>
+                        <li>Shipped through 8 major iterations (V8 in production), eliminating manual script interpretation and standardizing compliance reporting across every SQL domain the team owns</li>
+                    </ul>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Power BI</span>
+                        <span class="tech-tag">DAX</span>
+                        <span class="tech-tag">Power Query</span>
+                        <span class="tech-tag">T-SQL</span>
+                        <span class="tech-tag">SQL Server</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mixed-Signal PCB Validation & Test Automation -->
+            <div class="project-card reveal">
+                <img src="assets/images/projects/pcb-automation.png" alt="CNSI PCB 2023">
+                <div class="project-info">
+                    <h3>Mixed-Signal PCB Validation &amp; Test Automation</h3>
+                    <p><em>2023 | Hardware &bull; Embedded Testing &bull; California NanoSystems Institute</em></p>
+                    <p>
+                        Supported mixed-signal PCB design, bring-up, and automated testing in an
+                        electronics research environment at CNSI, bridging hands-on lab work with
+                        Python/MATLAB scripting.
+                    </p>
+                    <ul>
+                        <li>Used SMT tools and PCB layouts to assemble and validate prototype boards for active projects</li>
+                        <li>Wrote Python/MATLAB test scripts to automate validation across 20+ hardware boards</li>
+                        <li>Used Keysight/Agilent-style oscilloscopes, multimeters, and analyzers to confirm design specs</li>
+                        <li>Helped maintain consistent test workflows across multiple CNSI electronics projects</li>
+                    </ul>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">MATLAB</span>
+                        <span class="tech-tag">PCB Design</span>
+                        <span class="tech-tag">Test Automation</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SBOM Vulnerability Analysis Web Application -->
+            <div class="project-card reveal"
+                 id="sbom-web-app">
+                <img src="assets/images/projects/sbom-web-app.png" alt="SBOM Analysis Platform">
+                <div class="project-info">
+                    <h3>SBOM Vulnerability Analysis Web Application</h3>
+                    <p><em>2025 | Full Stack &bull; Security Engineering &bull; Bank of America</em></p>
+                    <p>
+                        Built a full-stack platform used internally at Bank of America to analyze Software Bills of Materials (SBOMs),
+                        surface dependency risks, and generate CVE vulnerability reports for 200+ applications.
+                    </p>
+                    <ul>
+                        <li>Developed a Python/Flask backend API to ingest SBOM files and map components to NIST/NVD CVE databases</li>
+                        <li>Created a React dashboard for real-time risk scoring and vulnerability breakdowns</li>
+                        <li>Automated recurring compliance scans, highlighting high-severity issues for engineering teams</li>
+                        <li>Enabled teams to identify and resolve dependency risks significantly faster than manual workflows</li>
+                        <li>Integrated role-based access controls and secure token-based API access for internal users</li>
+                    </ul>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Flask</span>
+                        <span class="tech-tag">React</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Position Exposure Aggregation Engine -->
+            <div class="project-card reveal">
+                <img src="assets/images/projects/position-exposure-engine.png" alt="Position Exposure Aggregation Engine">
+                <div class="project-info">
+                    <h3>Position Exposure Aggregation Engine</h3>
+                    <p><em>2025 | Software Engineering &bull; Data Pipelines &bull; Bank of America</em></p>
+                    <p>
+                        Built a Python/T-SQL engine to aggregate position and exposure data across multiple
+                        Global Markets trading books, using vector-style transformations to power internal
+                        risk and reporting workflows.
+                    </p>
+                    <ul>
+                        <li>Loaded and joined multi-table position data into in-memory NumPy/Pandas structures for fast aggregation</li>
+                        <li>Implemented matrix transformations to roll up exposure by desk, product, and currency</li>
+                        <li>Optimized slow queries by restructuring joins and pre-computing intermediate views, cutting key workloads from minutes to seconds</li>
+                        <li>Exported summarized exposure tables back to SQL Server for integration with existing dashboards and reporting tools</li>
+                    </ul>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">T-SQL</span>
+                        <span class="tech-tag">NumPy</span>
+                        <span class="tech-tag">Pandas</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Enterprise SQL Server Automation Platform -->
+            <div class="project-card reveal"
+                 id="sql-automation-platform">
+                <img src="assets/images/projects/sql-automation-platform.png" alt="SQL Server Automation Project">
+                <div class="project-info">
+                    <h3>Enterprise SQL Server Automation Platform</h3>
+                    <p><em>2025 | Software Engineering &bull; Backend &bull; Bank of America</em></p>
+                    <p>
+                        Designed and deployed an automation framework for managing access control across
+                        Bank of America's Global Markets Microsoft SQL Server infrastructure (1,000+ databases).
+                    </p>
+                    <ul>
+                        <li>Engineered Python + T-SQL tools to revoke permissions, validate logins, and prevent orphaned accounts</li>
+                        <li>Reduced recurring manual workload by ~70% through cross-database scanning and cleanup</li>
+                        <li>Implemented compliance-grade logging, rollback safety, and clear audit trails for auditors</li>
+                        <li>Built secure PowerShell modules for privileged maintenance tasks on Windows Server hosts</li>
+                        <li>Standardized privilege lifecycles to reduce stale access and strengthen internal controls</li>
+                    </ul>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">T-SQL</span>
+                        <span class="tech-tag">PowerShell</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Arch Linux: Daily Driver System Build -->
+            <div class="project-card reveal">
+                <img src="assets/images/projects/arch-linux-setup.png" alt="Arch Linux Setup">
+                <div class="project-info">
+                    <h3>Arch Linux: Daily Driver System Build</h3>
+                    <p><em>2023 to Present | Software &bull; Personal Project</em></p>
+                    <p>
+                        Built and maintain a custom Arch Linux workstation as my primary environment for coursework at UCLA,
+                        research work at CNSI, and development during my Bank of America internship.
+                    </p>
+                    <ul>
+                        <li>Performed manual installation: disk partitioning, bootloader, kernel, and init configuration</li>
+                        <li>Configured a full development stack for C/C++, Python, SQL, and embedded workflows</li>
+                        <li>Automated provisioning using Bash scripts and pacman hooks for reproducible setups</li>
+                        <li>Customized a tiling window manager workflow for efficient multi-monitor productivity</li>
+                        <li>Integrated Docker, Git, and virtualization tools for safe testing of software and hardware projects</li>
+                    </ul>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Linux</span>
+                        <span class="tech-tag">Bash</span>
+                        <span class="tech-tag">Docker</span>
+                        <span class="tech-tag">Git</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- $0 Smartphone Spectrometer -->
+            <div class="project-card reveal"
+                 id="smartphone-spectrometer">
                 <img src="assets/images/projects/placeholder.svg" alt="Zero Dollar Smartphone Spectrometer">
                 <div class="project-info">
                     <h3>$0 Smartphone Spectrometer</h3>
@@ -190,234 +451,61 @@
                         <li>Identified both unknown sources as white LEDs of different color temperature (R/B ratios of about 1.22 and 1.70), one cooler and one warmer</li>
                         <li>Noted the method's real limitation: phone auto-exposure and slit alignment make the RGB ratios useful only for relative comparison, not absolute calibration</li>
                     </ul>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Optics</span>
+                        <span class="tech-tag">RGB Analysis</span>
+                    </div>
                 </div>
             </div>
 
-            <!-- 1. EMI Sensor Calibration — CNSI 2024 (hardware) -->
-            <div class="project-card"
-                 id="emi-sensor-calibration"
-                 data-category="hardware"
-                 data-rank-all="4"
-                 data-rank-hardware="1"
-                 data-rank-software="999"
-                 data-rank-research="3">
-                <img src="assets/images/projects/emi-sensor-calibration.png" alt="EMI Sensor Calibration 2024">
+            <!-- DBA Operational Fundamentals -->
+            <div class="project-card reveal"
+                 id="dba-operational-fundamentals">
+                <img src="assets/images/projects/placeholder.svg" alt="DBA Operational Fundamentals">
                 <div class="project-info">
-                    <h3>EMI Sensor Calibration &amp; Radar Simulation</h3>
-                    <p><em>2024 | Hardware • Signal Processing • California NanoSystems Institute</em></p>
+                    <h3>DBA Operational Fundamentals</h3>
+                    <p><em>Summer 2026 | Software Engineering &bull; Database Administration &bull; Bank of America</em></p>
                     <p>
-                        Built a calibration and analysis pipeline for multi-axis EMI sensors used in
-                        radar-inspired research at the California NanoSystems Institute (CNSI), combining
-                        Python-based tooling with signal-processing workflows.
+                        Built production-ready DBA competency from the ground up, pairing a structured training track
+                        with direct hands-on execution in production SQL Server environments under senior DBA guidance,
+                        bridging the gap between software engineering and infrastructure-level database operations.
                     </p>
                     <ul>
-                        <li>Automated calibration for 50+ multi-axis EMI sensor systems, replacing manual lab routines</li>
-                        <li>Improved sensor accuracy and noise stability by ~60% using Python, NumPy, and SciPy</li>
-                        <li>Integrated real-time data visualization to debug interference patterns and long-term drift</li>
-                        <li>Collaborated with CNSI researchers working on RF, EMI/EMC, and radar applications</li>
+                        <li>Mastered backup and recovery operations and full-lifecycle database provisioning and decommissioning</li>
+                        <li>Practiced access and permissions management grounded in least-privilege security principles</li>
+                        <li>Completed a structured training track (Percipio, Degreed) fused with direct execution in live environments</li>
+                        <li>Developed the operational fluency to step directly into production SQL Server administration workflows</li>
                     </ul>
+                    <div class="tech-tags">
+                        <span class="tech-tag">SQL Server Admin</span>
+                        <span class="tech-tag">Backup &amp; Recovery</span>
+                        <span class="tech-tag">Access Control</span>
+                    </div>
                 </div>
             </div>
 
-            <!-- 2. CNSI 2023 — PCB + Automation (hardware) -->
-            <div class="project-card"
-                 data-category="hardware"
-                 data-rank-all="10"
-                 data-rank-hardware="4"
-                 data-rank-software="999"
-                 data-rank-research="6">
-                <img src="assets/images/projects/pcb-automation.png" alt="CNSI PCB 2023">
+            <!-- SharePoint Information Architecture Overhaul -->
+            <div class="project-card reveal"
+                 id="sharepoint-ia-overhaul">
+                <img src="assets/images/projects/placeholder.svg" alt="SharePoint Information Architecture Overhaul">
                 <div class="project-info">
-                    <h3>Mixed-Signal PCB Validation &amp; Test Automation</h3>
-                    <p><em>2023 | Hardware • Embedded Testing • California NanoSystems Institute</em></p>
+                    <h3>SharePoint Information Architecture Overhaul</h3>
+                    <p><em>Summer 2026 | Software Engineering &bull; Information Architecture &bull; Bank of America</em></p>
                     <p>
-                        Supported mixed-signal PCB design, bring-up, and automated testing in an
-                        electronics research environment at CNSI, bridging hands-on lab work with
-                        Python/MATLAB scripting.
+                        Took full ownership of a team-wide documentation crisis, auditing a sprawling, disorganized
+                        SharePoint environment end to end and redesigning its information architecture from scratch
+                        to match how engineers actually search.
                     </p>
                     <ul>
-                        <li>Used SMT tools and PCB layouts to assemble and validate prototype boards for active projects</li>
-                        <li>Wrote Python/MATLAB test scripts to automate validation across 20+ hardware boards</li>
-                        <li>Used Keysight/Agilent-style oscilloscopes, multimeters, and analyzers to confirm design specs</li>
-                        <li>Helped maintain consistent test workflows across multiple CNSI electronics projects</li>
+                        <li>Audited the existing SharePoint environment and purged outdated and duplicate content</li>
+                        <li>Standardized folder hierarchies, built reusable page templates, and redesigned navigation around real engineer search behavior</li>
+                        <li>Converted a chaotic file dump into a scalable, self-service knowledge base for the DBA team's runbooks and reference documentation</li>
                     </ul>
-                </div>
-            </div>
-
-            <!-- X-Ray Diffraction Instrumentation Module (hardware) -->
-            <div class="project-card"
-                 data-category="hardware"
-                 data-rank-all="9"
-                 data-rank-hardware="3"
-                 data-rank-software="999"
-                 data-rank-research="5">
-                <img src="assets/images/projects/xrd-instrumentation.png" alt="X-Ray Diffraction Instrumentation Module">
-                <div class="project-info">
-                    <h3>X-Ray Diffraction Instrumentation Module</h3>
-                    <p><em>2023 to 2024 | Hardware • Instrumentation • California NanoSystems Institute</em></p>
-                    <p>
-                        Designed, assembled, and validated a custom electronics module to interface with an
-                        X-ray diffraction (XRD) system within CNSI's materials characterization facilities,
-                        taking the design from breadboard prototype to a lab-installed instrument.
-                    </p>
-                    <ul>
-                        <li>Soldered and assembled mixed through-hole and SMT components into a reliable module</li>
-                        <li>Migrated the design from temporary breadboard wiring to a robust lab-ready hardware unit</li>
-                        <li>Characterized and tested subcircuits using multimeters and oscilloscopes before integration</li>
-                        <li>Verified signal integrity and isolation to ensure safe operation around high-voltage XRD hardware</li>
-                        <li>Collaborated with CNSI staff and researchers to tune performance for real experimental workflows</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- 3. Bioelectronics Research (research) -->
-            <div class="project-card"
-                 data-category="research"
-                 data-rank-all="8"
-                 data-rank-hardware="7"
-                 data-rank-software="999"
-                 data-rank-research="1">
-                <img src="assets/images/projects/bioelectronics-research.png" alt="Bioelectronics">
-                <div class="project-info">
-                    <h3>Flexible Class III Bioelectronic IC Research</h3>
-                    <p><em>2022 to 2023 | Research • Integrated Bioelectronics • UCLA</em></p>
-                    <p>
-                        Contributed to a UCLA Integrated Bioelectronics research effort developing stretchable,
-                        medical-grade circuits for physiological sensing and stimulation in collaboration
-                        with engineers and physicians.
-                    </p>
-                    <ul>
-                        <li>Performed voltage tolerance, thermal endurance, and fatigue testing on flexible ICs</li>
-                        <li>Modeled analog behavior and stress response using LTspice and MATLAB</li>
-                        <li>Helped validate device reliability under strain for potential clinical applications</li>
-                        <li>Worked with cross-disciplinary teams at UCLA bridging EE, bioengineering, and medicine</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- 5. 10 kHz Notch Filter (hardware) -->
-            <div class="project-card"
-                 data-category="hardware"
-                 data-rank-all="5"
-                 data-rank-hardware="2"
-                 data-rank-software="999"
-                 data-rank-research="4">
-                <img src="assets/images/projects/notch-filter.png" alt="10 kHz Notch Filter">
-                <div class="project-info">
-                    <h3>10 kHz Active Notch Filter: Analog Design</h3>
-                    <p><em>2024 | Hardware • Circuit Design • UCLA </em></p>
-                    <p>
-                        Designed and analyzed a narrowband active notch filter to suppress SMPS-induced noise
-                        in the 10 Hz to 50 kHz audio band while maintaining a stable output from a current-source input.
-                    </p>
-                    <ul>
-                        <li>Achieved &gt;74 dB stopband attenuation at 10 kHz with &lt;2 kHz notch bandwidth</li>
-                        <li>Met a 10 kΩ passband transimpedance target (100 mV from 10 µA input current)</li>
-                        <li>Derived and applied closed-form design equations under realistic inductor and resistor limits</li>
-                        <li>Validated behavior using SPICE-style simulations and lab-style calculations</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Bank of America SQL Automation Platform (software) -->
-            <div class="project-card"
-                 id="sql-automation-platform"
-                 data-category="software"
-                 data-rank-all="1"
-                 data-rank-hardware="999"
-                 data-rank-software="1"
-                 data-rank-research="8">
-                <img src="assets/images/projects/sql-automation-platform.png" alt="SQL Server Automation Project">
-                <div class="project-info">
-                    <h3>Enterprise SQL Server Automation Platform</h3>
-                    <p><em>2025 | Software Engineering • Backend • Bank of America</em></p>
-                    <p>
-                        Designed and deployed an automation framework for managing access control across
-                        Bank of America's Global Markets Microsoft SQL Server infrastructure (1,000+ databases).
-                    </p>
-                    <ul>
-                        <li>Engineered Python + T-SQL tools to revoke permissions, validate logins, and prevent orphaned accounts</li>
-                        <li>Reduced recurring manual workload by ~70% through cross-database scanning and cleanup</li>
-                        <li>Implemented compliance-grade logging, rollback safety, and clear audit trails for auditors</li>
-                        <li>Built secure PowerShell modules for privileged maintenance tasks on Windows Server hosts</li>
-                        <li>Standardized privilege lifecycles to reduce stale access and strengthen internal controls</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- NEW: Position Exposure Aggregation Engine (software) -->
-            <div class="project-card"
-                 data-category="software"
-                 data-rank-all="3"
-                 data-rank-hardware="999"
-                 data-rank-software="3"
-                 data-rank-research="9">
-                <img src="assets/images/projects/position-exposure-engine.png" alt="Position Exposure Aggregation Engine">
-                <div class="project-info">
-                    <h3>Position Exposure Aggregation Engine</h3>
-                    <p><em>2025 | Software Engineering • Data Pipelines • Bank of America </em></p>
-                    <p>
-                        Built a Python/T-SQL engine to aggregate position and exposure data across multiple
-                        Global Markets trading books, using vector-style transformations to power internal
-                        risk and reporting workflows.
-                    </p>
-                    <ul>
-                        <li>Loaded and joined multi-table position data into in-memory NumPy/Pandas structures for fast aggregation</li>
-                        <li>Implemented matrix transformations to roll up exposure by desk, product, and currency</li>
-                        <li>Optimized slow queries by restructuring joins and pre-computing intermediate views, cutting key workloads from minutes to seconds</li>
-                        <li>Exported summarized exposure tables back to SQL Server for integration with existing dashboards and reporting tools</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Bank of America SBOM Web App (software) -->
-            <div class="project-card"
-                 id="sbom-web-app"
-                 data-category="software"
-                 data-rank-all="2"
-                 data-rank-hardware="999"
-                 data-rank-software="2"
-                 data-rank-research="10">
-                <img src="assets/images/projects/sbom-web-app.png" alt="SBOM Analysis Platform">
-                <div class="project-info">
-                    <h3>SBOM Vulnerability Analysis Web Application</h3>
-                    <p><em>2025 | Full Stack • Security Engineering • Bank of America</em></p>
-                    <p>
-                        Built a full-stack platform used internally at Bank of America to analyze Software Bills of Materials (SBOMs),
-                        surface dependency risks, and generate CVE vulnerability reports for 200+ applications.
-                    </p>
-                    <ul>
-                        <li>Developed a Python/Flask backend API to ingest SBOM files and map components to NIST/NVD CVE databases</li>
-                        <li>Created a React dashboard for real-time risk scoring and vulnerability breakdowns</li>
-                        <li>Automated recurring compliance scans, highlighting high-severity issues for engineering teams</li>
-                        <li>Enabled teams to identify and resolve dependency risks significantly faster than manual workflows</li>
-                        <li>Integrated role-based access controls and secure token-based API access for internal users</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Arch Linux Daily Driver (software) -->
-            <div class="project-card"
-                 data-category="software"
-                 data-rank-all="11"
-                 data-rank-hardware="999"
-                 data-rank-software="5"
-                 data-rank-research="11">
-                <img src="assets/images/projects/arch-linux-setup.png" alt="Arch Linux Setup">
-                <div class="project-info">
-                    <h3>Arch Linux: Daily Driver System Build</h3>
-                    <p><em>2023 to Present | Software • Personal Project</em></p>
-                    <p>
-                        Built and maintain a custom Arch Linux workstation as my primary environment for coursework at UCLA,
-                        research work at CNSI, and development during my Bank of America internship.
-                    </p>
-                    <ul>
-                        <li>Performed manual installation: disk partitioning, bootloader, kernel, and init configuration</li>
-                        <li>Configured a full development stack for C/C++, Python, SQL, and embedded workflows</li>
-                        <li>Automated provisioning using Bash scripts and pacman hooks for reproducible setups</li>
-                        <li>Customized a tiling window manager workflow for efficient multi-monitor productivity</li>
-                        <li>Integrated Docker, Git, and virtualization tools for safe testing of software and hardware projects</li>
-                    </ul>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Information Architecture</span>
+                        <span class="tech-tag">Knowledge Management</span>
+                        <span class="tech-tag">Documentation</span>
+                    </div>
                 </div>
             </div>
 
@@ -434,8 +522,8 @@
     <!-- Scroll Behavior -->
     <script src="js/navbar.js"></script>
 
-    <!-- Project Filter + Ranking Script -->
-    <script src="js/projects.js"></script>
+    <!-- Scroll-Reveal Animations -->
+    <script src="js/scroll-reveal.js"></script>
 
 </body>
 </html>

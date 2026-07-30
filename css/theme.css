@@ -1,6 +1,10 @@
 /* Theme tokens: dark (default) and light, toggled via [data-theme] on <html> */
 
 :root {
+    /* Typography */
+    --font-sans: 'IBM Plex Sans', Arial, sans-serif;
+    --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
+
     /* Flat dark surfaces (stats strip, projects page body, header solid, footer) */
     --surface-navy: #0d1b2a;
     --surface-navy-card: #1b263b;

@@ -1,6 +1,6 @@
 /* General Styles */
 body {
-    font-family: Arial, sans-serif;
+    font-family: var(--font-sans);
     margin: 0;
     padding: 0;
     background-color: var(--surface-navy);
@@ -89,61 +89,6 @@ main {
 }
 
 /* ------------------------------------------
-   FILTER BAR
-------------------------------------------- */
-.filter-bar {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    padding: 30px 20px;
-    background-color: var(--surface-navy);
-    flex-wrap: wrap;
-    border-bottom: 1px solid var(--border-on-dark);
-    transition: background-color 0.3s ease;
-}
-
-.filter-bar button {
-    background-color: var(--surface-navy-card);
-    color: var(--text-on-dark);
-    padding: 12px 24px;
-    font-size: 1rem;
-    font-weight: 500;
-    border: 2px solid var(--border-on-dark);
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    backdrop-filter: blur(8px);
-}
-
-.filter-bar button:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 221, 87, 0.5);
-    color: #ffdd57;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-.filter-bar button.active {
-    background-color: #ffdd57;
-    color: #0d1b2a;
-    border-color: #ffdd57;
-    font-weight: 600;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 16px rgba(255, 221, 87, 0.4);
-}
-
-@media (max-width: 480px) {
-    .filter-bar {
-        gap: 8px;
-    }
-
-    .filter-bar button {
-        padding: 8px 14px;
-        font-size: 0.85rem;
-    }
-}
-
-/* ------------------------------------------
    PROJECTS LIST
 ------------------------------------------- */
 .projects-list {
@@ -223,9 +168,11 @@ main {
 
 .project-info > p:first-of-type {
     margin: 0 0 16px 0;
-    font-size: 0.95rem;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
     color: var(--text-on-dark-softer);
-    font-style: italic;
+    font-style: normal;
+    letter-spacing: 0.01em;
 }
 
 .project-info > p:not(:first-of-type) {
@@ -236,16 +183,47 @@ main {
 }
 
 .project-info ul {
-    padding-left: 24px;
+    list-style: none;
+    padding-left: 0;
     margin: 0;
-    list-style-position: outside;
 }
 
 .project-info ul li {
+    position: relative;
     margin-bottom: 12px;
+    padding-left: 22px;
     line-height: 1.6;
     color: var(--text-on-dark-soft);
     font-size: 1rem;
+}
+
+.project-info ul li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+    background-color: #ffdd57;
+}
+
+.tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 20px;
+}
+
+.tech-tag {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    padding: 5px 12px;
+    border-radius: 999px;
+    background-color: rgba(255, 221, 87, 0.12);
+    color: #ffdd57;
+    border: 1px solid rgba(255, 221, 87, 0.35);
+    white-space: nowrap;
 }
 
 /* ------------------------------------------
@@ -380,16 +358,6 @@ footer p {
         font-size: 1rem;
     }
 
-    .filter-bar {
-        padding: 25px 15px;
-        gap: 10px;
-    }
-
-    .filter-bar button {
-        padding: 10px 20px;
-        font-size: 0.95rem;
-    }
-
     .projects-list {
         padding: 40px 15px;
     }
@@ -441,16 +409,6 @@ footer p {
 
     .about-text {
         font-size: 0.95rem;
-    }
-
-    .filter-bar {
-        padding: 20px 10px;
-        gap: 8px;
-    }
-
-    .filter-bar button {
-        padding: 10px 16px;
-        font-size: 0.9rem;
     }
 
     .projects-list {

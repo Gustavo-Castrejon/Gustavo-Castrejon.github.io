@@ -1,6 +1,6 @@
 /* General Styling for Resume Page */
 body {
-    font-family: Arial, sans-serif;
+    font-family: var(--font-sans);
     margin: 0;
     padding: 0;
     position: relative;
