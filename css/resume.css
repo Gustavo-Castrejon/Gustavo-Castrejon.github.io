@@ -294,6 +294,39 @@ footer p {
     .linkedin-logo-footer {
         width: 28px;
     }
+
+    .contact-section {
+        padding: 40px 30px;
+    }
+
+    .contact-section h2 {
+        font-size: 2rem;
+    }
+
+    .contact-section > p {
+        font-size: 1rem;
+        margin-bottom: 32px;
+    }
+
+    .contact-item {
+        padding: 18px 20px;
+    }
+
+    .contact-icon {
+        font-size: 1.6rem;
+        margin-right: 16px;
+        width: 36px;
+    }
+
+    .linkedin-logo-container {
+        margin-right: 16px;
+        width: 36px;
+        height: 36px;
+    }
+
+    .contact-item a {
+        font-size: 1.05rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -345,4 +378,158 @@ footer p {
     .linkedin-logo-footer {
         width: 24px;
     }
+
+    .contact-section {
+        padding: 30px 20px;
+        border-radius: 12px;
+    }
+
+    .contact-section h2 {
+        font-size: 1.75rem;
+        margin-bottom: 10px;
+    }
+
+    .contact-section > p {
+        font-size: 0.95rem;
+        margin-bottom: 28px;
+    }
+
+    .contact-details {
+        gap: 12px;
+    }
+
+    .contact-item {
+        padding: 16px 18px;
+        border-radius: 10px;
+    }
+
+    .contact-icon {
+        font-size: 1.5rem;
+        margin-right: 14px;
+        width: 32px;
+    }
+
+    .linkedin-logo-container {
+        margin-right: 14px;
+        width: 32px;
+        height: 32px;
+        padding: 6px;
+    }
+
+    .linkedin-logo {
+        width: 20px;
+    }
+
+    .contact-item a {
+        font-size: 1rem;
+    }
+}
+
+/* Get In Touch section (merged from the former Contact page) */
+.contact-section {
+    padding: 50px 40px;
+    max-width: 700px;
+    width: 100%;
+    margin: 40px auto 0 auto;
+
+    /* translucent glass panel, flips with theme */
+    background-color: var(--glass-panel);
+    border-radius: 16px;
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(3px);
+    border: 1px solid var(--border-on-dark);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.contact-section h2 {
+    text-align: center;
+    margin: 0 0 12px 0;
+    font-size: 2.5rem;
+    color: var(--text-on-dark);
+    font-weight: 600;
+    letter-spacing: -0.5px;
+}
+
+.contact-section > p {
+    text-align: center;
+    margin: 0 0 40px 0;
+    font-size: 1.1rem;
+    color: var(--text-on-dark-soft);
+    line-height: 1.6;
+}
+
+.contact-details {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+    width: 100%;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    padding: 20px 24px;
+
+    /* semi-transparent tiles, flip with theme */
+    background-color: var(--glass-panel-strong);
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-on-dark);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.contact-item:hover {
+    background-color: var(--glass-panel-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border-color: rgba(132, 220, 255, 0.5);
+}
+
+.contact-icon {
+    font-size: 1.8rem;
+    margin-right: 20px;
+    color: #84dcff;
+    flex-shrink: 0;
+    width: 40px;
+    text-align: center;
+}
+
+.linkedin-item {
+    display: flex;
+    align-items: center;
+}
+
+.linkedin-logo-container {
+    background-color: #0077b5;
+    padding: 8px;
+    border-radius: 6px;
+    margin-right: 20px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+}
+
+.linkedin-logo {
+    width: 24px;
+    height: auto;
+    display: block;
+}
+
+.contact-item a {
+    font-size: 1.15rem;
+    color: var(--text-on-dark);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    word-break: break-word;
+}
+
+.contact-item a:hover {
+    text-decoration: underline;
 }
