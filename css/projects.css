@@ -105,6 +105,17 @@ main {
     margin-bottom: 40px;
 }
 
+.projects-kicker {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #ffdd57;
+    text-align: center;
+    margin: 0 0 44px 0;
+}
+
 /* ------------------------------------------
    PROJECT CARD STYLE
 ------------------------------------------- */
@@ -114,36 +125,117 @@ main {
     align-items: flex-start;
     background-color: var(--surface-navy-card);
     margin-bottom: 40px;
-    border-radius: 12px;
+    border-radius: 14px;
     overflow: hidden;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
     text-align: left;
     border: 1px solid var(--border-on-dark);
     scroll-margin-top: 90px;
-    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
     gap: 0;
 }
 
 .project-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
-    border-color: rgba(255, 221, 87, 0.3);
+    transform: translateY(-6px);
+    box-shadow: 0 22px 48px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 221, 87, 0.18), 0 0 44px rgba(255, 221, 87, 0.1);
+    border-color: rgba(255, 221, 87, 0.45);
 }
 
-.project-card img {
+/* Alternate media/info sides for scroll rhythm on wide viewports */
+.project-card:nth-of-type(even) {
+    flex-direction: row-reverse;
+}
+
+.project-media {
+    position: relative;
     width: 300px;
+    flex-shrink: 0;
+    align-self: stretch;
+    overflow: hidden;
+}
+
+.project-media img,
+.cover-tile {
+    width: 100%;
     height: 100%;
     min-height: 200px;
     object-fit: cover;
     background-color: var(--surface-charcoal);
-    flex-shrink: 0;
-    transition: transform 0.3s ease;
     display: block;
-    align-self: stretch;
+    transition: transform 0.5s ease;
 }
 
-.project-card:hover img {
-    transform: scale(1.02);
+.project-card:hover .project-media img,
+.project-card:hover .cover-tile {
+    transform: scale(1.06);
+}
+
+.project-index {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    z-index: 2;
+    font-family: var(--font-mono);
+    font-size: 2.4rem;
+    font-weight: 600;
+    line-height: 1;
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 0 2px 16px rgba(0, 0, 0, 0.7);
+    pointer-events: none;
+}
+
+/* Cover tiles for projects without a screenshot yet */
+.cover-tile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cover-monogram {
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-size: 1.9rem;
+    letter-spacing: 0.04em;
+}
+
+.cover-tile--1 {
+    background:
+        radial-gradient(circle at 30% 20%, rgba(132, 220, 255, 0.28), transparent 60%),
+        linear-gradient(135deg, #16283d, #0d1b2a);
+}
+
+.cover-tile--1 .cover-monogram {
+    color: #84dcff;
+}
+
+.cover-tile--2 {
+    background:
+        radial-gradient(circle at 70% 80%, rgba(255, 221, 87, 0.22), transparent 60%),
+        linear-gradient(135deg, #1b263b, #0d1b2a);
+}
+
+.cover-tile--2 .cover-monogram {
+    color: #ffdd57;
+}
+
+.cover-tile--3 {
+    background:
+        radial-gradient(circle at 30% 80%, rgba(132, 220, 255, 0.26), transparent 60%),
+        linear-gradient(135deg, #0d1b2a, #1b263b);
+}
+
+.cover-tile--3 .cover-monogram {
+    color: #84dcff;
+}
+
+.cover-tile--4 {
+    background:
+        radial-gradient(circle at 70% 20%, rgba(255, 221, 87, 0.24), transparent 60%),
+        linear-gradient(135deg, #16283d, #0d1b2a);
+}
+
+.cover-tile--4 .cover-monogram {
+    color: #ffdd57;
 }
 
 .project-info {
@@ -268,11 +360,13 @@ footer p {
         margin-right: auto;
     }
 
-    .project-card img {
+    .project-media {
         width: 450px;
+    }
+
+    .project-media img,
+    .cover-tile {
         min-height: 300px;
-        height: 100%;
-        object-fit: cover;
     }
 
     .project-info {
@@ -297,11 +391,13 @@ footer p {
 }
 
 @media (min-width: 1200px) and (max-width: 1399px) {
-    .project-card img {
+    .project-media {
         width: 400px;
+    }
+
+    .project-media img,
+    .cover-tile {
         min-height: 270px;
-        height: 100%;
-        object-fit: cover;
     }
 
     .project-info {
@@ -314,11 +410,13 @@ footer p {
 }
 
 @media (min-width: 1024px) and (max-width: 1199px) {
-    .project-card img {
+    .project-media {
         width: 350px;
+    }
+
+    .project-media img,
+    .cover-tile {
         min-height: 240px;
-        height: 100%;
-        object-fit: cover;
     }
 
     .project-info {
@@ -362,15 +460,26 @@ footer p {
         padding: 40px 15px;
     }
 
-    .project-card {
+    .project-card,
+    .project-card:nth-of-type(even) {
         flex-direction: column;
         margin-bottom: 35px;
     }
 
-    .project-card img {
+    .project-media {
+        width: 100%;
+    }
+
+    .project-media img,
+    .cover-tile {
         width: 100%;
         min-width: 100%;
         height: 250px;
+        min-height: 0;
+    }
+
+    .project-index {
+        font-size: 2rem;
     }
 
     .project-info {
@@ -415,13 +524,25 @@ footer p {
         padding: 30px 10px;
     }
 
-    .project-card {
+    .project-card,
+    .project-card:nth-of-type(even) {
         margin-bottom: 30px;
         border-radius: 8px;
     }
 
-    .project-card img {
+    .project-media img,
+    .cover-tile {
         height: 200px;
+    }
+
+    .project-index {
+        font-size: 1.6rem;
+        top: 10px;
+        left: 10px;
+    }
+
+    .cover-monogram {
+        font-size: 1.5rem;
     }
 
     .project-info {
